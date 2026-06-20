@@ -471,10 +471,25 @@
       flex-wrap: wrap;
     }
 
-    .price{
+    .price-wrap{
+      display:flex;
+      align-items:baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .price-old{
+      text-decoration: line-through;
+      opacity: .55;
+      color: var(--muted);
+      font-size: .95rem;
+      font-weight: 600;
+    }
+
+    .price-new{
       font-size: 1.12rem;
       font-weight: 800;
-      color: #cfe5f5;
+      color: #7fb3d5;
     }
 
     .tag{
@@ -898,7 +913,10 @@
                   <li>Cocok untuk branding dan promosi online.</li>
                 </ul>
                 <div class="meta">
-                  <span class="price">Rp 35.000</span>
+                  <div class="price-wrap">
+                    <span class="price-old">Rp 50.000</span>
+                    <span class="price-new">Rp 35.000</span>
+                  </div>
                   <span class="tag">Siap edit</span>
                 </div>
                 <div class="product-actions">
@@ -919,7 +937,10 @@
                   <li>Mudah dipakai untuk banyak kebutuhan.</li>
                 </ul>
                 <div class="meta">
-                  <span class="price">Rp 25.000</span>
+                  <div class="price-wrap">
+                    <span class="price-old">Rp 35.000</span>
+                    <span class="price-new">Rp 25.000</span>
+                  </div>
                   <span class="tag">Instant download</span>
                 </div>
                 <div class="product-actions">
@@ -940,7 +961,10 @@
                   <li>Cocok untuk landing page penjualan.</li>
                 </ul>
                 <div class="meta">
-                  <span class="price">Rp 50.000</span>
+                  <div class="price-wrap">
+                    <span class="price-old">Rp 75.000</span>
+                    <span class="price-new">Rp 50.000</span>
+                  </div>
                   <span class="tag">Responsive</span>
                 </div>
                 <div class="product-actions">
