@@ -90,8 +90,6 @@
       background: linear-gradient(135deg, var(--primary), var(--primary-2));
       color:white;
       box-shadow: var(--shadow);
-      position: relative;
-      overflow:hidden;
     }
     .brand-badge::after{
       content:"✿";
@@ -151,8 +149,7 @@
       background:
         radial-gradient(circle at 35% 35%, rgba(127,179,213,.26) 0 16%, transparent 17%),
         radial-gradient(circle at 65% 35%, rgba(169,207,232,.30) 0 14%, transparent 15%),
-        radial-gradient(circle at 50% 62%, rgba(127,179,213,.18) 0 22%, transparent 23%),
-        radial-gradient(circle at 50% 50%, rgba(255,255,255,.0) 0 100%);
+        radial-gradient(circle at 50% 62%, rgba(127,179,213,.18) 0 22%, transparent 23%);
       filter: blur(1px);
       opacity: .9;
       transform: rotate(12deg);
@@ -227,8 +224,7 @@
     .btn-ghost:hover{ background: rgba(127,179,213,.08); }
 
     .hero-aside{
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.78), rgba(235,245,252,.84));
+      background: linear-gradient(180deg, rgba(255,255,255,.78), rgba(235,245,252,.84));
       border: 1px solid rgba(127,179,213,.18);
       border-radius: 28px;
       padding: 22px;
@@ -367,13 +363,26 @@
       font-weight: 700;
     }
 
+    .product-actions{
+      display:flex;
+      gap:10px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-sm{
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-size: .92rem;
+    }
+
     .features{
       display:grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 14px;
     }
 
-    .feature{
+    .feature, .payment-box, .form-box{
       padding: 18px;
       border-radius: 22px;
       background: rgba(255,255,255,.76);
@@ -387,38 +396,102 @@
       font-size: 1.02rem;
     }
 
-    .feature span{
+    .feature span, .payment-box p{
       color: var(--muted);
       line-height:1.6;
       font-size: .94rem;
     }
 
-    .contact{
+    .order-wrap{
       display:grid;
       grid-template-columns: 1fr 1fr;
       gap: 18px;
     }
 
-    .contact-box{
-      padding: 24px;
-      border-radius: 28px;
+    .form-group{
+      display:grid;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    label{
+      font-weight: 700;
+      font-size: .94rem;
+      color: #365e7e;
+    }
+
+    input, textarea, select{
+      width: 100%;
+      border: 1px solid rgba(127,179,213,.22);
+      background: rgba(255,255,255,.9);
+      border-radius: 14px;
+      padding: 13px 14px;
+      font: inherit;
+      color: var(--text);
+      outline: none;
+    }
+
+    textarea{ min-height: 120px; resize: vertical; }
+
+    input:focus, textarea:focus, select:focus{
+      border-color: rgba(127,179,213,.6);
+      box-shadow: 0 0 0 4px rgba(127,179,213,.12);
+    }
+
+    .payment-grid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .payment-card{
+      padding: 18px;
+      border-radius: 22px;
       background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(235,245,252,.88));
       border: 1px solid rgba(127,179,213,.16);
       box-shadow: var(--shadow);
     }
 
-    .contact-list{
+    .qris-box{
+      height: 220px;
+      display:grid;
+      place-items:center;
+      border-radius: 18px;
+      border: 1px dashed rgba(127,179,213,.35);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(127,179,213,.10), transparent 22%),
+        rgba(255,255,255,.85);
+      margin-top: 14px;
+      color: #5b7d99;
+      text-align:center;
+      padding: 18px;
+    }
+
+    .qris-mark{
+      width: 110px;
+      height: 110px;
+      border-radius: 20px;
+      background:
+        linear-gradient(135deg, rgba(127,179,213,.22), rgba(255,255,255,.92));
+      display:grid;
+      place-items:center;
+      font-weight: 900;
+      color:#375d7d;
+      box-shadow: inset 0 0 0 8px rgba(255,255,255,.45);
+      margin-bottom: 10px;
+    }
+
+    .rekening-list{
       display:grid;
       gap: 12px;
       margin-top: 14px;
     }
 
-    .contact-item{
+    .rekening-item{
       padding: 14px 16px;
       border-radius: 16px;
       background: rgba(127,179,213,.08);
       color: var(--text);
-      text-decoration:none;
       font-weight: 600;
     }
 
@@ -432,7 +505,8 @@
       .hero-inner,
       .grid,
       .features,
-      .contact{
+      .order-wrap,
+      .payment-grid{
         grid-template-columns: 1fr;
       }
       .section-title{
@@ -465,8 +539,8 @@
         <nav>
           <ul>
             <li><a href="#produk">Produk</a></li>
-            <li><a href="#fitur">Fitur</a></li>
-            <li><a href="#kontak">Kontak</a></li>
+            <li><a href="#order">Order</a></li>
+            <li><a href="#pembayaran">Pembayaran</a></li>
           </ul>
         </nav>
       </div>
@@ -489,7 +563,7 @@
               </p>
               <div class="cta">
                 <a class="btn btn-primary" href="#produk">Lihat Produk</a>
-                <a class="btn btn-ghost" href="#kontak">Hubungi Admin</a>
+                <a class="btn btn-ghost" href="#order">Pesan Sekarang</a>
               </div>
             </div>
 
@@ -522,15 +596,13 @@
         <div class="section-title">
           <div>
             <h2>Daftar Produk</h2>
-            <p>Contoh kartu produk yang bisa langsung kamu ganti sesuai barang digital yang dijual.</p>
+            <p>Setiap kartu produk sekarang punya tombol demo / live preview yang bisa kamu arahkan ke link produk atau halaman demo.</p>
           </div>
         </div>
 
         <div class="grid">
           <article class="card">
-            <div class="card-img">
-              <div class="flower">✿</div>
-            </div>
+            <div class="card-img"><div class="flower">✿</div></div>
             <div class="card-body">
               <h3>Template Instagram</h3>
               <p class="desc">Paket template feed dan story untuk branding online shop, UMKM, dan promosi produk digital.</p>
@@ -538,13 +610,15 @@
                 <span class="price">Rp 35.000</span>
                 <span class="tag">Siap edit</span>
               </div>
+              <div class="product-actions">
+                <a class="btn btn-ghost btn-sm" href="https://example.com" target="_blank">Demo / Live Preview</a>
+                <a class="btn btn-primary btn-sm" href="#order">Beli</a>
+              </div>
             </div>
           </article>
 
           <article class="card">
-            <div class="card-img">
-              <div class="flower">✿</div>
-            </div>
+            <div class="card-img"><div class="flower">✿</div></div>
             <div class="card-body">
               <h3>Preset Soft Blue</h3>
               <p class="desc">Preset warna lembut untuk foto produk, konten sosial media, dan estetika visual yang rapi.</p>
@@ -552,13 +626,15 @@
                 <span class="price">Rp 25.000</span>
                 <span class="tag">Instant download</span>
               </div>
+              <div class="product-actions">
+                <a class="btn btn-ghost btn-sm" href="https://example.com" target="_blank">Demo / Live Preview</a>
+                <a class="btn btn-primary btn-sm" href="#order">Beli</a>
+              </div>
             </div>
           </article>
 
           <article class="card">
-            <div class="card-img">
-              <div class="flower">✿</div>
-            </div>
+            <div class="card-img"><div class="flower">✿</div></div>
             <div class="card-body">
               <h3>Katalog Digital</h3>
               <p class="desc">Template katalog online yang cocok untuk dipakai di GitHub Pages, WhatsApp, atau link bio.</p>
@@ -566,47 +642,9 @@
                 <span class="price">Rp 50.000</span>
                 <span class="tag">Responsive</span>
               </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-img">
-              <div class="flower">✿</div>
-            </div>
-            <div class="card-body">
-              <h3>E-book Design</h3>
-              <p class="desc">Produk digital berupa e-book panduan, checklist, atau materi pembelajaran dengan layout menarik.</p>
-              <div class="meta">
-                <span class="price">Rp 40.000</span>
-                <span class="tag">PDF</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-img">
-              <div class="flower">✿</div>
-            </div>
-            <div class="card-body">
-              <h3>Website Undangan</h3>
-              <p class="desc">Template undangan digital satu file HTML yang bisa disesuaikan dan di-host di GitHub Pages.</p>
-              <div class="meta">
-                <span class="price">Rp 75.000</span>
-                <span class="tag">Custom</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-img">
-              <div class="flower">✿</div>
-            </div>
-            <div class="card-body">
-              <h3>Jasa Edit Konten</h3>
-              <p class="desc">Layanan edit produk digital, banner, katalog, dan materi promosi dengan tampilan elegan.</p>
-              <div class="meta">
-                <span class="price">Mulai Rp 20.000</span>
-                <span class="tag">Jasa</span>
+              <div class="product-actions">
+                <a class="btn btn-ghost btn-sm" href="https://example.com" target="_blank">Demo / Live Preview</a>
+                <a class="btn btn-primary btn-sm" href="#order">Beli</a>
               </div>
             </div>
           </article>
@@ -614,61 +652,90 @@
       </div>
     </section>
 
-    <section id="fitur">
+    <section id="order">
       <div class="container">
         <div class="section-title">
           <div>
-            <h2>Fitur Katalog</h2>
-            <p>Struktur dibuat sederhana supaya mudah diedit, ringan dibuka, dan nyaman di HP.</p>
+            <h2>Formulir Pemesanan WhatsApp</h2>
+            <p>Form ini akan menyusun pesan otomatis lalu membuka WhatsApp pembeli dengan isi order yang sudah rapi.</p>
           </div>
         </div>
 
-        <div class="features">
-          <div class="feature">
-            <strong>Responsive</strong>
-            <span>Tampilan otomatis menyesuaikan layar laptop, tablet, dan HP.</span>
-          </div>
-          <div class="feature">
-            <strong>Soft Blue Floral</strong>
-            <span>Warna lembut dengan nuansa floral yang manis dan profesional.</span>
-          </div>
-          <div class="feature">
-            <strong>1 File HTML</strong>
-            <span>Cukup simpan sebagai <em>index.html</em> lalu upload ke GitHub.</span>
-          </div>
-          <div class="feature">
-            <strong>Mudah Custom</strong>
-            <span>Nama produk, harga, dan kontak bisa diganti langsung di file.</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="kontak">
-      <div class="container">
-        <div class="section-title">
-          <div>
-            <h2>Kontak Pemesanan</h2>
-            <p>Bagian ini bisa kamu ubah jadi WhatsApp, Instagram, atau link checkout.</p>
-          </div>
-        </div>
-
-        <div class="contact">
-          <div class="contact-box">
-            <h3>Hubungi Admin</h3>
-            <div class="contact-list">
-              <a class="contact-item" href="https://wa.me/6281234567890" target="_blank">WhatsApp: 0812-3456-7890</a>
-              <a class="contact-item" href="https://instagram.com/" target="_blank">Instagram: @unfanga.digital</a>
-              <a class="contact-item" href="mailto:hello@unfanga.com">Email: hello@unfanga.com</a>
-            </div>
+        <div class="order-wrap">
+          <div class="form-box">
+            <form id="orderForm">
+              <div class="form-group">
+                <label for="nama">Nama</label>
+                <input id="nama" name="nama" type="text" placeholder="Nama lengkap" required />
+              </div>
+              <div class="form-group">
+                <label for="wa">Nomor WhatsApp</label>
+                <input id="wa" name="wa" type="tel" placeholder="08xxxxxxxxxx" required />
+              </div>
+              <div class="form-group">
+                <label for="produkPilihan">Produk</label>
+                <select id="produkPilihan" name="produkPilihan" required>
+                  <option value="">Pilih produk</option>
+                  <option>Template Instagram</option>
+                  <option>Preset Soft Blue</option>
+                  <option>Katalog Digital</option>
+                  <option>E-book Design</option>
+                  <option>Website Undangan</option>
+                  <option>Jasa Edit Konten</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="catatan">Catatan</label>
+                <textarea id="catatan" name="catatan" placeholder="Contoh: minta warna lebih soft, kirim file via WA, dll."></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Kirim Pesanan via WhatsApp</button>
+            </form>
           </div>
 
-          <div class="contact-box">
-            <h3>Catatan</h3>
-            <p class="desc" style="margin-top:12px;">
-              Ganti semua isi contoh sesuai produkmu. Kalau mau, saya bisa lanjut buatkan versi yang
-              khusus untuk katalog isi produkmu sendiri, lengkap dengan nama produk, harga, dan tombol order.
+          <div class="payment-box">
+            <h3>Cara Order</h3>
+            <p style="margin-top:10px;">
+              Isi formulir, lalu klik kirim. Pesan akan otomatis terbuka di WhatsApp dengan format order yang siap dikirim.
             </p>
+            <div class="rekening-list">
+              <div class="rekening-item">1. Pilih produk yang kamu inginkan.</div>
+              <div class="rekening-item">2. Isi nama, nomor WhatsApp, dan catatan.</div>
+              <div class="rekening-item">3. Klik tombol kirim untuk lanjut ke chat WhatsApp.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pembayaran">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <h2>QRIS dan Rekening</h2>
+            <p>Bagian ini cocok untuk menampilkan metode pembayaran digital dan transfer bank.</p>
+          </div>
+        </div>
+
+        <div class="payment-grid">
+          <div class="payment-card">
+            <h3>Pembayaran QRIS</h3>
+            <p>Tempelkan gambar QRIS kamu di area ini. Jika belum ada, bagian ini bisa dipakai sebagai placeholder.</p>
+            <div class="qris-box">
+              <div>
+                <div class="qris-mark">QRIS</div>
+                <div>Upload gambar QRIS di sini</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="payment-card">
+            <h3>Transfer Rekening</h3>
+            <p>Ganti data rekening di bawah sesuai milikmu. Kamu juga bisa menambah bank lain jika diperlukan.</p>
+            <div class="rekening-list">
+              <div class="rekening-item">BCA - 1234567890 - a.n. Unfanga Digital</div>
+              <div class="rekening-item">SeaBank - 901794598110 - a.n. Unfanga Digital</div>
+              <div class="rekening-item">BRI - 0987654321 - a.n. Unfanga Digital</div>
+            </div>
           </div>
         </div>
       </div>
@@ -680,5 +747,31 @@
       © 2026 Unfanga Digital. All rights reserved.
     </div>
   </footer>
+
+  <script>
+    const orderForm = document.getElementById('orderForm');
+
+    orderForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const nama = document.getElementById('nama').value.trim();
+      const wa = document.getElementById('wa').value.trim();
+      const produk = document.getElementById('produkPilihan').value;
+      const catatan = document.getElementById('catatan').value.trim();
+
+      const adminNumber = '6281234567890';
+      const pesan = `Halo admin Unfanga Digital, saya ingin order:
+
+Nama: ${nama}
+Nomor WhatsApp: ${wa}
+Produk: ${produk}
+Catatan: ${catatan || '-'} 
+
+Mohon info detail dan total pembayarannya.`;
+
+      const url = `https://wa.me/${adminNumber}?text=${encodeURIComponent(pesan)}`;
+      window.open(url, '_blank');
+    });
+  </script>
 </body>
 </html>
