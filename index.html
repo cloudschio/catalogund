@@ -3,21 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Unfanga Digital - Katalog</title>
+  <title>Cloudsinvite - Katalog</title>
   <meta name="description" content="Katalog produk digital dengan tema soft blue floral, form order WhatsApp, pembayaran QRIS, dark mode, dan konsultasi chat." />
   <style>
     :root{
-      --bg: #f7fbff;
-      --bg-2: #eef6ff;
-      --card: rgba(255,255,255,.80);
-      --card-border: rgba(118, 170, 214, .25);
-      --section-border: rgba(88, 141, 186, .55);
-      --text: #24415d;
-      --muted: #5f7690;
-      --primary: #7fb3d5;
-      --primary-2: #a9cfe8;
-      --accent: #d8eaf7;
-      --shadow: 0 18px 50px rgba(77, 126, 170, .14);
+      color-scheme: light dark;
+      --bg: #f8fcff;
+      --bg-2: #edf5fb;
+      --card: #ffffff;
+      --card-2: #f4f9fd;
+      --card-border: rgba(67, 110, 150, .28);
+      --section-border: rgba(67, 110, 150, .72);
+      --text: #17324d;
+      --muted: #4f6780;
+      --primary: #6ea9d3;
+      --primary-2: #95c2e4;
+      --shadow: 0 14px 38px rgba(72, 110, 145, .16);
       --radius: 24px;
     }
 
@@ -29,8 +30,8 @@
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(182, 216, 241, .55), transparent 28%),
-        radial-gradient(circle at top right, rgba(221, 237, 248, .75), transparent 24%),
+        radial-gradient(circle at top left, rgba(181, 214, 238, .38), transparent 28%),
+        radial-gradient(circle at top right, rgba(220, 236, 248, .50), transparent 24%),
         linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
       min-height: 100vh;
       transition: background .3s ease, color .3s ease;
@@ -51,17 +52,17 @@
     }
 
     body.dark{
-      --bg: #0f1720;
-      --bg-2: #162131;
-      --card: rgba(21, 30, 42, .84);
-      --card-border: rgba(148, 188, 224, .18);
-      --section-border: rgba(127, 179, 213, .42);
-      --text: #e7f0f8;
-      --muted: #a9bed0;
+      --bg: #0d1520;
+      --bg-2: #152131;
+      --card: #182231;
+      --card-2: #101826;
+      --card-border: rgba(141, 182, 217, .28);
+      --section-border: rgba(123, 172, 212, .58);
+      --text: #eff6fc;
+      --muted: #b6c8d8;
       --primary: #7fb3d5;
       --primary-2: #5f8fb8;
-      --accent: #203246;
-      --shadow: 0 18px 50px rgba(0, 0, 0, .28);
+      --shadow: 0 16px 40px rgba(0, 0, 0, .30);
     }
 
     .container{
@@ -77,12 +78,12 @@
       top: 0;
       z-index: 50;
       backdrop-filter: blur(12px);
-      background: linear-gradient(180deg, rgba(247,251,255,.92), rgba(247,251,255,.72));
+      background: linear-gradient(180deg, rgba(248,252,255,.92), rgba(248,252,255,.72));
       border-bottom: 1px solid rgba(127,179,213,.12);
     }
 
     body.dark header{
-      background: linear-gradient(180deg, rgba(15,23,32,.92), rgba(15,23,32,.72));
+      background: linear-gradient(180deg, rgba(13,21,32,.92), rgba(13,21,32,.72));
     }
 
     .nav{
@@ -119,7 +120,6 @@
       background: linear-gradient(135deg, var(--primary), var(--primary-2));
       color:white;
       box-shadow: var(--shadow);
-      position:relative;
       overflow:hidden;
     }
     .brand-badge::after{
@@ -195,23 +195,22 @@
       transform: translateX(24px);
     }
 
+    section{
+      padding: 24px 0;
+    }
+
     .hero{
-      padding: 54px 0 28px;
+      padding-top: 38px;
     }
 
     .hero-card,
     .section-box{
-      background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(248,251,255,.75));
+      background: var(--card);
       border: 4px solid var(--section-border);
       border-radius: 34px;
       box-shadow: var(--shadow);
       overflow:hidden;
       position: relative;
-    }
-
-    body.dark .hero-card,
-    body.dark .section-box{
-      background: linear-gradient(180deg, rgba(21,30,42,.88), rgba(15,23,32,.78));
     }
 
     .hero-inner{
@@ -262,11 +261,19 @@
       margin-bottom: 16px;
     }
 
+    .hero p,
+    .section-title p,
+    .desc,
+    .feature span,
+    .payment-card p,
+    footer{
+      color: var(--muted);
+      line-height:1.7;
+    }
+
     .hero p{
       margin: 0 0 22px;
-      color: var(--muted);
       font-size: 1.04rem;
-      line-height: 1.7;
       max-width: 58ch;
     }
 
@@ -299,40 +306,24 @@
     .btn-primary:hover{ transform: translateY(-2px); }
 
     .btn-ghost{
-      background: rgba(255,255,255,.72);
+      background: var(--card-2);
       color: var(--text);
-      border: 1px solid rgba(127,179,213,.20);
+      border: 1px solid rgba(127,179,213,.26);
     }
-    body.dark .btn-ghost{
-      background: rgba(21,30,42,.72);
-    }
-
     .btn-ghost:hover{ background: rgba(127,179,213,.08); }
 
     .hero-aside{
-      background: linear-gradient(180deg, rgba(255,255,255,.78), rgba(235,245,252,.84));
+      background: var(--card-2);
       border: 1px solid rgba(127,179,213,.18);
       border-radius: 28px;
       padding: 22px;
     }
 
-    body.dark .hero-aside{
-      background: linear-gradient(180deg, rgba(21,30,42,.78), rgba(15,23,32,.84));
-    }
-
     .hero-aside-box{
       border-radius: 22px;
       padding: 22px;
-      background:
-        radial-gradient(circle at top right, rgba(169,207,232,.45), transparent 40%),
-        linear-gradient(180deg, rgba(255,255,255,.82), rgba(247,251,255,.88));
+      background: var(--card);
       border: 1px solid rgba(127,179,213,.16);
-    }
-
-    body.dark .hero-aside-box{
-      background:
-        radial-gradient(circle at top right, rgba(95,143,184,.25), transparent 40%),
-        linear-gradient(180deg, rgba(21,30,42,.86), rgba(15,23,32,.90));
     }
 
     .stats{
@@ -345,12 +336,8 @@
     .stat{
       padding: 16px;
       border-radius: 18px;
-      background: rgba(255,255,255,.78);
+      background: var(--card);
       border: 1px solid rgba(127,179,213,.15);
-    }
-
-    body.dark .stat{
-      background: rgba(15,23,32,.72);
     }
 
     .stat strong{
@@ -360,8 +347,8 @@
       color: #365e7e;
     }
 
-    section{
-      padding: 24px 0;
+    .section-box{
+      padding: 22px;
     }
 
     .section-title{
@@ -370,13 +357,6 @@
       justify-content:space-between;
       gap: 18px;
       margin-bottom: 18px;
-    }
-
-    .section-title p{
-      margin:0;
-      color: var(--muted);
-      line-height:1.6;
-      max-width: 62ch;
     }
 
     .grid{
@@ -391,7 +371,6 @@
       box-shadow: var(--shadow);
       border-radius: var(--radius);
       overflow:hidden;
-      backdrop-filter: blur(10px);
       transition: .28s ease;
     }
 
@@ -400,10 +379,8 @@
     .card-img{
       height: 180px;
       background:
-        linear-gradient(135deg, rgba(127,179,213,.32), rgba(255,255,255,.15)),
-        radial-gradient(circle at 20% 30%, rgba(255,255,255,.8), transparent 18%),
-        radial-gradient(circle at 80% 20%, rgba(255,255,255,.65), transparent 16%),
-        linear-gradient(180deg, #dff0fb 0%, #bfdcf0 100%);
+        linear-gradient(135deg, rgba(110,169,211,.38), rgba(255,255,255,.22)),
+        linear-gradient(180deg, #dff0fb 0%, #c4def0 100%);
       position: relative;
       display:flex;
       align-items:flex-end;
@@ -412,10 +389,8 @@
 
     body.dark .card-img{
       background:
-        linear-gradient(135deg, rgba(95,143,184,.30), rgba(255,255,255,.08)),
-        radial-gradient(circle at 20% 30%, rgba(255,255,255,.2), transparent 18%),
-        radial-gradient(circle at 80% 20%, rgba(255,255,255,.15), transparent 16%),
-        linear-gradient(180deg, #162131 0%, #1d2a3b 100%);
+        linear-gradient(135deg, rgba(110,169,211,.24), rgba(255,255,255,.06)),
+        linear-gradient(180deg, #182231 0%, #1f2c3c 100%);
     }
 
     .flower{
@@ -435,8 +410,6 @@
     }
 
     .desc{
-      color: var(--muted);
-      line-height:1.65;
       font-size: .96rem;
       margin:0 0 14px;
     }
@@ -492,19 +465,12 @@
       background: var(--card);
       border: 1px solid var(--card-border);
       box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
     }
 
     .feature strong{
       display:block;
       margin-bottom: 6px;
       font-size: 1.02rem;
-    }
-
-    .feature span, .payment-card p{
-      color: var(--muted);
-      line-height:1.6;
-      font-size: .94rem;
     }
 
     .order-wrap, .payment-grid{
@@ -527,8 +493,8 @@
 
     input, textarea, select{
       width: 100%;
-      border: 1px solid rgba(127,179,213,.22);
-      background: rgba(255,255,255,.9);
+      border: 1px solid rgba(67, 110, 150, .28);
+      background: #ffffff;
       border-radius: 14px;
       padding: 13px 14px;
       font: inherit;
@@ -536,9 +502,12 @@
       outline: none;
     }
 
-    body.dark input, body.dark textarea, body.dark select{
-      background: rgba(15,23,32,.88);
+    body.dark input,
+    body.dark textarea,
+    body.dark select{
+      background: #101826;
       color: var(--text);
+      border: 1px solid rgba(141, 182, 217, .28);
     }
 
     textarea{ min-height: 120px; resize: vertical; }
@@ -554,19 +523,11 @@
       place-items:center;
       border-radius: 18px;
       border: 1px dashed rgba(127,179,213,.35);
-      background:
-        radial-gradient(circle at 20% 20%, rgba(127,179,213,.10), transparent 22%),
-        rgba(255,255,255,.85);
+      background: var(--card-2);
       margin-top: 14px;
       color: #5b7d99;
       text-align:center;
       padding: 18px;
-    }
-
-    body.dark .qris-box{
-      background:
-        radial-gradient(circle at 20% 20%, rgba(127,179,213,.12), transparent 22%),
-        rgba(15,23,32,.85);
     }
 
     .qris-mark{
@@ -592,13 +553,10 @@
     .rekening-item{
       padding: 14px 16px;
       border-radius: 16px;
-      background: rgba(127,179,213,.08);
+      background: rgba(110,169,211,.10);
       color: var(--text);
       font-weight: 600;
-    }
-
-    .chat-box{
-      padding: 16px;
+      border: 1px solid rgba(67, 110, 150, .20);
     }
 
     .chat-header{
@@ -650,25 +608,31 @@
     }
 
     .bubble.received{
-      background: rgba(255,255,255,.88);
+      background: #f3f8fc;
+      color: #1b3550;
+      border: 1px solid rgba(67, 110, 150, .18);
       border-top-left-radius: 8px;
       align-self:start;
     }
 
     .bubble.sent{
-      background: #dcf8c6;
+      background: #dff1d8;
+      color: #18311f;
+      border: 1px solid rgba(79, 138, 93, .18);
       border-top-right-radius: 8px;
       margin-left:auto;
-      color:#234;
     }
 
     body.dark .bubble.received{
-      background: rgba(21,30,42,.92);
+      background: #101826;
+      color: #edf4fb;
+      border: 1px solid rgba(141, 182, 217, .18);
     }
 
     body.dark .bubble.sent{
-      background: #1f3b2e;
-      color:#eaf8ef;
+      background: #203926;
+      color: #eaf7ee;
+      border: 1px solid rgba(118, 171, 128, .18);
     }
 
     .chat-form{
@@ -689,7 +653,6 @@
 
     footer{
       padding: 28px 0 40px;
-      color: var(--muted);
       text-align:center;
     }
 
@@ -711,7 +674,7 @@
       .container{ width: min(100% - 20px, 1180px); }
       nav ul{ gap: 8px; }
       nav a{ padding: 8px 11px; font-size: .92rem; }
-      .hero{ padding-top: 30px; }
+      .hero{ padding-top: 26px; }
       .hero-inner{ padding: 20px; }
       .hero-aside{ padding: 16px; }
       h1{ font-size: 2.05rem; }
@@ -728,7 +691,7 @@
       <div class="nav">
         <a href="#" class="brand">
           <span class="brand-badge"></span>
-          <span>Unfanga Digital</span>
+          <span>Cloudsinvite</span>
         </a>
 
         <div class="nav-right">
@@ -752,7 +715,7 @@
   <main>
     <section class="hero">
       <div class="container">
-        <div class="hero-card section-box">
+        <div class="hero-card">
           <div class="floral"></div>
           <div class="hero-inner">
             <div>
@@ -795,7 +758,7 @@
 
     <section id="produk">
       <div class="container">
-        <div class="section-box" style="padding:22px;">
+        <div class="section-box">
           <div class="section-title">
             <div>
               <h2>Daftar Produk</h2>
@@ -858,7 +821,7 @@
 
     <section id="order">
       <div class="container">
-        <div class="section-box" style="padding:22px;">
+        <div class="section-box">
           <div class="section-title">
             <div>
               <h2>Formulir Pemesanan WhatsApp</h2>
@@ -925,9 +888,9 @@
               </p>
 
               <div class="chat-header">
-                <div class="chat-avatar">U</div>
+                <div class="chat-avatar">C</div>
                 <div class="chat-meta">
-                  <strong>Unfanga Digital</strong>
+                  <strong>Cloudsinvite</strong>
                   <span>online</span>
                 </div>
               </div>
@@ -959,7 +922,7 @@
 
     <section id="pembayaran">
       <div class="container">
-        <div class="section-box" style="padding:22px;">
+        <div class="section-box">
           <div class="section-title">
             <div>
               <h2>QRIS dan Rekening</h2>
@@ -983,9 +946,9 @@
               <h3>Transfer Rekening</h3>
               <p>Ganti data rekening di bawah sesuai milikmu. Kamu juga bisa menambah bank lain jika diperlukan.</p>
               <div class="rekening-list">
-                <div class="rekening-item">BCA - 1234567890 - a.n. Unfanga Digital</div>
-                <div class="rekening-item">SeaBank - 901794598110 - a.n. Unfanga Digital</div>
-                <div class="rekening-item">BRI - 0987654321 - a.n. Unfanga Digital</div>
+                <div class="rekening-item">BCA - 1234567890 - a.n. Cloudsinvite</div>
+                <div class="rekening-item">SeaBank - 901794598110 - a.n. Cloudsinvite</div>
+                <div class="rekening-item">BRI - 0987654321 - a.n. Cloudsinvite</div>
               </div>
             </div>
           </div>
@@ -996,7 +959,7 @@
 
   <footer>
     <div class="container">
-      © 2026 Unfanga Digital. All rights reserved.
+      © 2026 Cloudsinvite. All rights reserved.
     </div>
   </footer>
 
@@ -1034,7 +997,7 @@
       const catatan = document.getElementById('catatan').value.trim();
 
       const adminNumber = '6281234567890';
-      const pesan = `Halo admin, saya ingin memesan undangan digital dengan data berikut:
+      const pesan = `Halo admin Cloudsinvite, saya ingin memesan undangan digital dengan data berikut:
 
 Nama Mempelai Laki-Laki: ${mempelaiLaki}
 Nama Mempelai Perempuan: ${mempelaiPerempuan}
@@ -1060,7 +1023,7 @@ Mohon info detail selanjutnya.`;
       const isi = document.getElementById('isiKonsul').value.trim();
       const adminNumber = '6281234567890';
 
-      const pesan = `Halo admin Unfanga Digital, saya ingin konsultasi.
+      const pesan = `Halo admin Cloudsinvite, saya ingin konsultasi.
 
 Nama: ${nama}
 Pesan: ${isi}`;
