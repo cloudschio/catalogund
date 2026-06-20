@@ -23,7 +23,7 @@
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: auto; }
 
     body{
       margin: 0;
@@ -85,6 +85,7 @@
       backdrop-filter: blur(12px);
       background: linear-gradient(180deg, rgba(13,21,32,.92), rgba(13,21,32,.72));
       border-bottom: 1px solid rgba(127,179,213,.12);
+      box-shadow: 0 10px 24px rgba(0,0,0,.20);
     }
 
     .nav{
@@ -508,6 +509,7 @@
       gap:10px;
       margin-top: 14px;
       flex-wrap: wrap;
+      justify-content: flex-start;
     }
 
     .features{
@@ -637,38 +639,6 @@
       color: var(--muted);
     }
 
-    .chat-messages{
-      display:grid;
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-
-    .bubble{
-      max-width: 88%;
-      padding: 12px 14px;
-      border-radius: 18px;
-      line-height:1.55;
-      font-size: .95rem;
-      position: relative;
-      box-shadow: 0 8px 18px rgba(0,0,0,.06);
-    }
-
-    .bubble.received{
-      background: #101826;
-      color: #edf4fb;
-      border: 1px solid rgba(141, 182, 217, .18);
-      border-top-left-radius: 8px;
-      align-self:start;
-    }
-
-    .bubble.sent{
-      background: #203926;
-      color: #eaf7ee;
-      border: 1px solid rgba(118, 171, 128, .18);
-      border-top-right-radius: 8px;
-      margin-left:auto;
-    }
-
     .chat-form{
       display:grid;
       gap: 12px;
@@ -740,14 +710,33 @@
       font-weight: 600;
     }
 
-    .testimonial-grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+    .testimonial-scroller{
+      overflow: hidden;
+      position: relative;
     }
 
-    .testimonial-card:hover{
-      transform: translateY(-4px);
+    .testimonial-track{
+      display:flex;
+      gap: 18px;
+      width: max-content;
+      animation: marquee 28s linear infinite;
+      will-change: transform;
+      padding-bottom: 6px;
+    }
+
+    .testimonial-track:hover{
+      animation-play-state: paused;
+    }
+
+    @keyframes marquee{
+      from{ transform: translateX(0); }
+      to{ transform: translateX(-50%); }
+    }
+
+    .testimonial-card{
+      width: min(340px, 85vw);
+      flex: 0 0 auto;
+      transform: none !important;
     }
 
     .testimonial-head{
@@ -788,6 +777,8 @@
     footer{
       padding: 28px 0 40px;
       text-align:center;
+      color: var(--muted);
+      line-height:1.7;
     }
 
     @media (max-width: 980px){
@@ -795,8 +786,7 @@
       .grid,
       .features,
       .order-wrap,
-      .payment-grid,
-      .testimonial-grid{
+      .payment-grid{
         grid-template-columns: 1fr;
       }
       .section-title{
@@ -805,10 +795,38 @@
       }
     }
 
+    @media (max-width: 760px){
+      header .nav{
+        align-items:stretch;
+      }
+
+      .nav-right{
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      nav{
+        width: 100%;
+      }
+
+      nav ul{
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      nav a{
+        display:flex;
+        justify-content:center;
+        width: 100%;
+        padding: 10px 12px;
+      }
+    }
+
     @media (max-width: 640px){
       .container{ width: min(100% - 20px, 1180px); }
-      nav ul{ gap: 8px; }
-      nav a{ padding: 8px 11px; font-size: .92rem; }
       .hero{ padding-top: 24px; }
       .hero-inner{ padding: 20px; }
       .hero-aside{ padding: 16px; }
@@ -817,6 +835,12 @@
       .bubble{ max-width: 100%; }
       .chat-input-row{ grid-template-columns: 1fr; }
       .chat-send{ width: 100%; }
+      nav ul{
+        grid-template-columns: 1fr 1fr;
+      }
+      .testimonial-card{
+        width: 82vw;
+      }
     }
   </style>
 </head>
@@ -988,38 +1012,95 @@
             </div>
           </div>
 
-          <div class="testimonial-grid">
-            <div class="testimonial-card">
-              <div class="testimonial-head">
-                <div class="testimonial-avatar">A</div>
-                <div>
-                  <strong>Aulia</strong>
-                  <span>Pengguna undangan digital</span>
+          <div class="testimonial-scroller">
+            <div class="testimonial-track">
+              <div class="testimonial-card">
+                <div class="testimonial-head">
+                  <div class="testimonial-avatar">A</div>
+                  <div>
+                    <strong>Aulia</strong>
+                    <span>Pengguna undangan digital</span>
+                  </div>
                 </div>
+                <p>Desainnya cantik, responsif, dan cepat dipakai. Hasilnya terlihat lebih premium dari yang saya bayangkan.</p>
               </div>
-              <p>Desainnya cantik, responsif, dan cepat dipakai. Hasilnya terlihat lebih premium dari yang saya bayangkan.</p>
-            </div>
 
-            <div class="testimonial-card">
-              <div class="testimonial-head">
-                <div class="testimonial-avatar">R</div>
-                <div>
-                  <strong>Rizky</strong>
-                  <span>Pelanggan paket katalog</span>
+              <div class="testimonial-card">
+                <div class="testimonial-head">
+                  <div class="testimonial-avatar">R</div>
+                  <div>
+                    <strong>Rizky</strong>
+                    <span>Pelanggan paket katalog</span>
+                  </div>
                 </div>
+                <p>Form order WhatsApp-nya mudah dipahami, dan tampilannya juga rapi di HP. Sangat membantu untuk promosi.</p>
               </div>
-              <p>Form order WhatsApp-nya mudah dipahami, dan tampilannya juga rapi di HP. Sangat membantu untuk promosi.</p>
-            </div>
 
-            <div class="testimonial-card">
-              <div class="testimonial-head">
-                <div class="testimonial-avatar">N</div>
-                <div>
-                  <strong>Nadia</strong>
-                  <span>Pelanggan konsultasi</span>
+              <div class="testimonial-card">
+                <div class="testimonial-head">
+                  <div class="testimonial-avatar">N</div>
+                  <div>
+                    <strong>Nadia</strong>
+                    <span>Pelanggan konsultasi</span>
+                  </div>
                 </div>
+                <p>Fitur konsultasinya sangat praktis. Proses order jadi lebih jelas dan profesional.</p>
               </div>
-              <p>Fitur konsultasinya mirip chat WhatsApp jadi lebih nyaman. Proses order terasa lebih cepat dan jelas.</p>
+
+              <div class="testimonial-card">
+                <div class="testimonial-head">
+                  <div class="testimonial-avatar">S</div>
+                  <div>
+                    <strong>Salsa</strong>
+                    <span>Pembeli QRIS</span>
+                  </div>
+                </div>
+                <p>Pembayaran QRIS-nya gampang dipakai, dan halaman ini terlihat meyakinkan saat dibuka di mobile.</p>
+              </div>
+
+              <div class="testimonial-card">
+                <div class="testimonial-head">
+                  <div class="testimonial-avatar">D</div>
+                  <div>
+                    <strong>Dimas</strong>
+                    <span>Pelanggan template</span>
+                  </div>
+                </div>
+                <p>Warnanya soft, tombolnya jelas, dan tampilannya cocok untuk jual produk digital.</p>
+              </div>
+
+              <div class="testimonial-card">
+                <div class="testimonial-head">
+                  <div class="testimonial-avatar">A</div>
+                  <div>
+                    <strong>Aulia</strong>
+                    <span>Pengguna undangan digital</span>
+                  </div>
+                </div>
+                <p>Desainnya cantik, responsif, dan cepat dipakai. Hasilnya terlihat lebih premium dari yang saya bayangkan.</p>
+              </div>
+
+              <div class="testimonial-card">
+                <div class="testimonial-head">
+                  <div class="testimonial-avatar">R</div>
+                  <div>
+                    <strong>Rizky</strong>
+                    <span>Pelanggan paket katalog</span>
+                  </div>
+                </div>
+                <p>Form order WhatsApp-nya mudah dipahami, dan tampilannya juga rapi di HP. Sangat membantu untuk promosi.</p>
+              </div>
+
+              <div class="testimonial-card">
+                <div class="testimonial-head">
+                  <div class="testimonial-avatar">N</div>
+                  <div>
+                    <strong>Nadia</strong>
+                    <span>Pelanggan konsultasi</span>
+                  </div>
+                </div>
+                <p>Fitur konsultasinya sangat praktis. Proses order jadi lebih jelas dan profesional.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -1091,29 +1172,13 @@
             <div class="chat-box">
               <h3>Form Konsultasi</h3>
               <p class="desc" style="margin-top:10px;">
-                Tampilan berikut dibuat seperti chat WhatsApp untuk memudahkan konsultasi sebelum order.
+                Isi data lalu kirim untuk konsultasi.
               </p>
 
-              <div class="chat-header">
-                <div class="chat-avatar">C</div>
-                <div class="chat-meta">
-                  <strong>Cloudsinvite</strong>
-                  <span>online</span>
-                </div>
-              </div>
-
-              <div class="chat-messages">
-                <div class="bubble received">Halo, saya mau konsultasi dulu tentang undangan digital.</div>
-                <div class="bubble sent">Tentu, silakan isi data konsultasinya di bawah ya.</div>
-              </div>
-
               <form id="consultForm" class="chat-form">
-                <div class="chat-input-row">
-                  <div class="form-group" style="margin:0;">
-                    <label for="namaKonsul">Nama Anda</label>
-                    <input id="namaKonsul" type="text" placeholder="Nama Anda" required>
-                  </div>
-                  <button type="submit" class="btn btn-primary chat-send">Kirim</button>
+                <div class="form-group">
+                  <label for="namaKonsul">Nama Anda</label>
+                  <input id="namaKonsul" type="text" placeholder="Nama Anda" required>
                 </div>
 
                 <div class="form-group">
@@ -1121,9 +1186,10 @@
                   <textarea id="isiKonsul" placeholder="Contoh: Saya ingin tanya harga, fitur, dan estimasi pengerjaan..." required></textarea>
                 </div>
 
+                <button type="submit" class="btn btn-primary chat-send">Kirim</button>
+
                 <div class="location-box">
                   <h3>Lokasi</h3>
-
                   <div class="map-preview">
                     <iframe
                       src="https://www.google.com/maps/place/CLOUDSINVITE+%7C+Jasa+Undangan+Digital/@-7.4077488,112.7363045,17z/data=!3m1!4b1!4m6!3m5!1s0x2dd7e5b5e9f8718b:0xcddcea16afe81b7d!8m2!3d-7.4077488!4d112.7363045!16s%2Fg%2F11zg3tf7x0?hl=id&entry=ttu&g_ep=EgoyMDI2MDYxNi4wIKXMDSoASAFQAw%3D%3D"
@@ -1140,9 +1206,7 @@
 
                   <div class="location-wa">
                     <strong>WhatsApp</strong>
-                    <a href="https://wa.me/6285711191912" target="_blank" rel="noopener">
-                      0857-1119-1912
-                    </a>
+                    <a href="https://wa.me/6285711191912" target="_blank" rel="noopener">0857-1119-1912</a>
                   </div>
                 </div>
               </form>
@@ -1187,9 +1251,7 @@
   </main>
 
   <footer>
-    <div class="container">
-      © 2026 Cloudsinvite. All rights reserved.
-    </div>
+    <div class="container">© 2026 Cloudsinvite. All rights reserved.</div>
   </footer>
 
   <script>
