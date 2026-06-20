@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cloudsinvite - Katalog</title>
-  <meta name="description" content="Katalog produk digital dengan tema soft blue floral, form order WhatsApp, pembayaran QRIS, dark mode, dan konsultasi chat." />
+  <title>Cloudsinvite - Solusi undangan cantik, auto dilirik</title>
+  <meta name="description" content="Cloudsinvite - Solusi undangan cantik, auto dilirik. Katalog produk digital dengan tema soft blue floral, form order WhatsApp, pembayaran QRIS, dark mode, dan konsultasi chat." />
   <style>
     :root{
       color-scheme: light dark;
@@ -35,6 +35,7 @@
         linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
       min-height: 100vh;
       transition: background .3s ease, color .3s ease;
+      animation: pageFade .7s ease both;
     }
 
     body::before{
@@ -63,6 +64,16 @@
       --primary: #7fb3d5;
       --primary-2: #5f8fb8;
       --shadow: 0 16px 40px rgba(0, 0, 0, .30);
+    }
+
+    @keyframes pageFade{
+      from{ opacity:0; transform: translateY(10px); }
+      to{ opacity:1; transform: translateY(0); }
+    }
+
+    @keyframes floatIn{
+      from{ opacity:0; transform: translateY(24px); }
+      to{ opacity:1; transform: translateY(0); }
     }
 
     .container{
@@ -211,6 +222,7 @@
       box-shadow: var(--shadow);
       overflow:hidden;
       position: relative;
+      animation: floatIn .8s ease both;
     }
 
     .hero-inner{
@@ -256,9 +268,13 @@
     }
 
     h1{
-      font-size: clamp(2rem, 5vw, 4rem);
-      letter-spacing: -.03em;
+      font-size: clamp(2.6rem, 6vw, 5.2rem);
+      line-height: 1.02;
+      letter-spacing: -.05em;
       margin-bottom: 16px;
+      font-weight: 900;
+      text-transform: uppercase;
+      max-width: 12ch;
     }
 
     .hero p,
@@ -317,6 +333,8 @@
       border: 1px solid rgba(127,179,213,.18);
       border-radius: 28px;
       padding: 22px;
+      animation: floatIn .8s ease both;
+      animation-delay: .06s;
     }
 
     .hero-aside-box{
@@ -349,6 +367,7 @@
 
     .section-box{
       padding: 22px;
+      animation: floatIn .8s ease both;
     }
 
     .section-title{
@@ -372,9 +391,10 @@
       border-radius: var(--radius);
       overflow:hidden;
       transition: .28s ease;
+      animation: floatIn .8s ease both;
     }
 
-    .card:hover{ transform: translateY(-4px); }
+    .card:hover{ transform: translateY(-5px); }
 
     .card-img{
       height: 180px;
@@ -465,6 +485,7 @@
       background: var(--card);
       border: 1px solid var(--card-border);
       box-shadow: var(--shadow);
+      animation: floatIn .8s ease both;
     }
 
     .feature strong{
@@ -500,6 +521,7 @@
       font: inherit;
       color: var(--text);
       outline: none;
+      transition: all .25s ease;
     }
 
     body.dark input,
@@ -677,7 +699,7 @@
       .hero{ padding-top: 26px; }
       .hero-inner{ padding: 20px; }
       .hero-aside{ padding: 16px; }
-      h1{ font-size: 2.05rem; }
+      h1{ font-size: 2.25rem; max-width: 100%; }
       .card-img{ height: 160px; }
       .bubble{ max-width: 100%; }
       .chat-input-row{ grid-template-columns: 1fr; }
@@ -720,11 +742,10 @@
           <div class="hero-inner">
             <div>
               <div class="kicker">✿ Katalog Produk Digital Premium</div>
-              <h1>Soft Blue Floral Catalog untuk Penjualan Digital</h1>
+              <h1>CLOUDSINVITE - Solusi undangan cantik, auto dilirik</h1>
               <p>
-                Tampilkan produk digitalmu dengan tampilan yang lembut, elegan, dan modern.
-                Cocok untuk jual e-book, template, desain, preset, undangan digital, jasa digital,
-                atau produk UMKM online.
+                Tampilkan undangan digital dan produk kreatifmu dengan tampilan yang lembut, elegan, dan modern.
+                Cocok untuk jual undangan digital, template, desain, preset, atau layanan kreatif online.
               </p>
               <div class="cta">
                 <a class="btn btn-primary" href="#produk">Lihat Produk</a>
