@@ -3,25 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Katalog Undangan Digital - Premium Collection</title>
+    <title>Undangan Digital Luxury - Premium Collection</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary: #8b5cf6;
-            --accent: #f59e0b;
-            --text-dark: #1f2937;
-            --text-light: #6b7280;
-            --bg-light: #f9fafb;
-            --bg-white: #ffffff;
-            --gradient-1: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a78bfa 100%);
-            --gradient-2: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #fcd34d 100%);
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
-            --shadow-md: 0 8px 24px rgba(0,0,0,0.12);
-            --shadow-lg: 0 16px 48px rgba(0,0,0,0.16);
-            --shadow-glow: 0 8px 32px rgba(99,102,241,0.3);
+            --gold: #d4af37;
+            --gold-light: #f4e5bc;
+            --gold-dark: #b89628;
+            --black: #0a0a0a;
+            --black-light: #1a1a1a;
+            --black-medium: #2a2a2a;
+            --white: #ffffff;
+            --cream: #faf8f5;
+            --gradient-gold: linear-gradient(135deg, #d4af37 0%, #f4e5bc 50%, #d4af37 100%);
+            --gradient-black: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+            --shadow-gold: 0 8px 32px rgba(212,175,55,0.3);
+            --shadow-black: 0 8px 32px rgba(0,0,0,0.3);
         }
 
         * {
@@ -31,15 +29,15 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             line-height: 1.6;
-            color: var(--text-dark);
-            background-color: var(--bg-light);
+            color: var(--black);
+            background-color: var(--cream);
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
+        h1, h2, h3, h4, h5 {
+            font-family: 'Cormorant Garamond', serif;
         }
 
         /* Smooth Scroll */
@@ -48,10 +46,10 @@
         }
 
         /* Animations */
-        @keyframes fadeInUp {
+        @keyframes luxuryFadeIn {
             from {
                 opacity: 0;
-                transform: translateY(40px);
+                transform: translateY(50px);
             }
             to {
                 opacity: 1;
@@ -59,113 +57,97 @@
             }
         }
 
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes shimmer {
+        @keyframes goldShimmer {
             0% { background-position: -1000px 0; }
             100% { background-position: 1000px 0; }
         }
 
-        .animate-fade-in-up {
-            opacity: 0;
-            animation: fadeInUp 0.8s ease forwards;
+        @keyframes elegantFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
         }
 
-        .animate-fade-in-down {
-            opacity: 0;
-            animation: fadeInDown 0.8s ease forwards;
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
         }
 
-        .animate-scale-in {
+        .luxury-reveal {
             opacity: 0;
-            animation: scaleIn 0.6s ease forwards;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Scroll Animations */
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .scroll-reveal.revealed {
+        .luxury-reveal.revealed {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Dark Mode */
-        body.dark-mode {
-            background-color: #0f172a;
-            color: #e2e8f0;
+        /* Gold Text */
+        .gold-text {
+            background: var(--gradient-gold);
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            font-weight: 700;
         }
 
-        body.dark-mode .header {
-            background-color: #1e293b;
+        /* Gold Border */
+        .gold-border {
+            border: 1px solid var(--gold);
         }
 
-        body.dark-mode .hero {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        /* Gold Button */
+        .gold-btn {
+            background: var(--gradient-gold);
+            color: var(--black);
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 0;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        body.dark-mode .product-card {
-            background-color: #1e293b;
+        .gold-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s ease;
         }
 
-        body.dark-mode .form-container {
-            background-color: #1e293b;
+        .gold-btn:hover::before {
+            left: 100%;
         }
 
-        body.dark-mode .modal-content {
-            background-color: #1e293b;
-        }
-
-        body.dark-mode .section-bg {
-            background-color: #1e293b;
+        .gold-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-gold);
         }
 
         /* Header */
         .header {
-            background-color: var(--bg-white);
-            padding: 1.5rem 0;
+            background-color: var(--black);
+            padding: 2rem 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: var(--shadow-sm);
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
+            border-bottom: 1px solid var(--gold-dark);
         }
 
         .header.scrolled {
             padding: 1rem 0;
-            background-color: rgba(255, 255, 255, 0.98);
-        }
-
-        body.dark-mode .header.scrolled {
-            background-color: rgba(30, 41, 59, 0.98);
+            background-color: rgba(10, 10, 10, 0.98);
         }
 
         .navbar {
@@ -177,48 +159,52 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 1.8rem;
+            gap: 15px;
+            font-size: 2.5rem;
             font-weight: 700;
-            color: var(--primary);
-            font-family: 'Playfair Display', serif;
+            background: var(--gradient-gold);
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            font-family: 'Cormorant Garamond', serif;
         }
 
         .logo-icon {
-            font-size: 2rem;
-            animation: float 3s ease-in-out infinite;
+            font-size: 2.8rem;
+            animation: elegantFloat 4s ease-in-out infinite;
+            color: var(--gold);
+            background: none;
+            -webkit-background-clip: none;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 3rem;
             align-items: center;
         }
 
         .nav-link {
-            color: var(--text-dark);
+            color: var(--white);
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
+            font-weight: 400;
+            font-size: 1rem;
+            transition: all 0.3s ease;
             position: relative;
-        }
-
-        body.dark-mode .nav-link {
-            color: #e2e8f0;
+            letter-spacing: 1px;
         }
 
         .nav-link:hover {
-            color: var(--primary);
+            color: var(--gold);
         }
 
         .nav-link::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: -8px;
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--gradient-1);
+            background: var(--gold);
             transition: width 0.3s ease;
         }
 
@@ -227,31 +213,32 @@
         }
 
         .dark-mode-toggle {
-            background: var(--gradient-1);
-            border: none;
+            background: transparent;
+            border: 1px solid var(--gold);
             cursor: pointer;
             font-size: 1.3rem;
-            color: white;
-            padding: 0.7rem;
+            color: var(--gold);
+            padding: 0.8rem;
             border-radius: 50%;
             transition: all 0.3s ease;
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
         .dark-mode-toggle:hover {
-            transform: rotate(30deg) scale(1.1);
-            box-shadow: var(--shadow-glow);
+            background: var(--gold);
+            color: var(--black);
+            transform: rotate(30deg);
         }
 
         /* Hero Section */
         .hero {
-            background: var(--gradient-1);
-            color: white;
-            padding: 8rem 0 6rem;
+            background: var(--gradient-black);
+            color: var(--white);
+            padding: 10rem 0 8rem;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -264,52 +251,78 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3Cg%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.3;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212,175,55,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(212,175,55,0.1) 0%, transparent 50%);
+        }
+
+        .hero-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3Cg%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
         .hero-content {
             position: relative;
             z-index: 1;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
+        .hero .luxury-tag {
+            display: inline-block;
+            background: var(--gradient-gold);
+            color: var(--black);
+            padding: 0.6rem 2rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: luxuryFadeIn 1s ease;
+        }
+
         .hero h1 {
-            font-size: 4.5rem;
+            font-size: 6rem;
             margin-bottom: 1.5rem;
-            line-height: 1.2;
-            text-shadow: 2px 4px 8px rgba(0,0,0,0.2);
+            line-height: 1.1;
+            animation: luxuryFadeIn 1.2s ease;
         }
 
         .hero-subtitle {
-            font-size: 1.4rem;
-            margin-bottom: 3rem;
-            opacity: 0.95;
+            font-size: 1.5rem;
+            margin-bottom: 4rem;
+            opacity: 0.9;
             font-weight: 300;
+            animation: luxuryFadeIn 1.4s ease;
         }
 
         .search-box {
             display: flex;
             align-items: center;
-            background: white;
-            border-radius: 50px;
-            padding: 0.8rem 2rem;
-            max-width: 600px;
+            background: var(--black-light);
+            border: 1px solid var(--gold-dark);
+            border-radius: 0;
+            padding: 1rem 2.5rem;
+            max-width: 650px;
             margin: 0 auto;
-            box-shadow: var(--shadow-lg);
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
+            animation: luxuryFadeIn 1.6s ease;
         }
 
         .search-box:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            border-color: var(--gold);
+            box-shadow: var(--shadow-gold);
         }
 
         .search-box i {
-            color: var(--primary);
-            font-size: 1.2rem;
-            margin-right: 15px;
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-right: 20px;
         }
 
         .search-box input {
@@ -318,58 +331,119 @@
             width: 100%;
             padding: 0.5rem;
             font-size: 1.1rem;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--white);
+            background: transparent;
+        }
+
+        /* Divider */
+        .luxury-divider {
+            text-align: center;
+            margin: 4rem 0;
+            position: relative;
+        }
+
+        .luxury-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--gradient-gold);
+            opacity: 0.5;
+        }
+
+        .luxury-divider span {
+            display: inline-block;
+            background: var(--cream);
+            padding: 0 2rem;
+            color: var(--gold);
+            font-size: 2rem;
+            position: relative;
+            z-index: 1;
         }
 
         /* Stats Section */
         .stats {
-            background: var(--bg-white);
-            padding: 4rem 0;
-            box-shadow: var(--shadow-sm);
+            background: var(--cream);
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-gold);
         }
 
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            max-width: 1200px;
+            gap: 3rem;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
         .stat-item {
             text-align: center;
-            padding: 2rem;
+            padding: 3rem 2rem;
+            position: relative;
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 1px;
+            height: 100%;
+            background: var(--gold-dark);
+            opacity: 0.3;
+        }
+
+        .stat-item:first-child::before,
+        .stat-item:last-child::before {
+            display: none;
         }
 
         .stat-number {
-            font-size: 3rem;
+            font-size: 4rem;
             font-weight: 700;
-            color: var(--primary);
-            font-family: 'Playfair Display', serif;
-            margin-bottom: 0.5rem;
+            background: var(--gradient-gold);
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            margin-bottom: 0.8rem;
+            font-family: 'Cormorant Garamond', serif;
         }
 
         .stat-label {
-            font-size: 1rem;
-            color: var(--text-light);
-            font-weight: 500;
+            font-size: 1.1rem;
+            color: var(--black-medium);
+            font-weight: 400;
+            letter-spacing: 1px;
         }
 
         /* Katalog Section */
         .katalog {
-            padding: 6rem 0;
-            background: var(--bg-light);
+            padding: 8rem 0;
+            background: var(--white);
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 5rem;
         }
 
         .section-title {
-            font-size: 3.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
+            font-size: 5rem;
+            color: var(--black);
+            margin-bottom: 1.5rem;
             position: relative;
             display: inline-block;
         }
@@ -377,113 +451,81 @@
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -15px;
+            bottom: -20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: var(--gradient-1);
-            border-radius: 2px;
+            width: 150px;
+            height: 3px;
+            background: var(--gradient-gold);
         }
 
         .section-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            margin-top: 2rem;
-            max-width: 600px;
+            font-size: 1.3rem;
+            color: var(--black-medium);
+            margin-top: 3rem;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            font-weight: 300;
         }
 
         .filters {
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
+            gap: 1.5rem;
+            margin-bottom: 4rem;
             flex-wrap: wrap;
         }
 
         .filter-btn {
-            padding: 1rem 2rem;
-            border: 2px solid var(--primary);
-            background: none;
-            color: var(--primary);
+            padding: 1.2rem 2.5rem;
+            border: 1px solid var(--gold-dark);
+            background: transparent;
+            color: var(--black);
             cursor: pointer;
-            border-radius: 30px;
-            font-weight: 600;
+            font-weight: 500;
             font-size: 1rem;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             position: relative;
-            overflow: hidden;
-        }
-
-        .filter-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-1);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .filter-btn:hover::before,
-        .filter-btn.active::before {
-            opacity: 1;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .filter-btn:hover,
         .filter-btn.active {
-            color: white;
-            border-color: transparent;
+            background: var(--gradient-gold);
+            color: var(--black);
+            border-color: var(--gold);
+            box-shadow: var(--shadow-gold);
         }
 
         /* Product Grid */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 3rem;
-            max-width: 1400px;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 4rem;
+            max-width: 1600px;
             margin: 0 auto;
         }
 
         .product-card {
-            background: var(--bg-white);
-            border-radius: 20px;
+            background: var(--cream);
+            border: 1px solid var(--gold-dark);
             overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: all 0.4s ease;
+            transition: all 0.5s ease;
             cursor: pointer;
             position: relative;
         }
 
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--gradient-1);
-            opacity: 0;
-            z-index: 10;
-            transition: opacity 0.4s ease;
-        }
-
         .product-card:hover {
-            transform: translateY(-15px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .product-card:hover::before {
-            opacity: 0.1;
+            transform: translateY(-20px);
+            box-shadow: var(--shadow-gold);
+            border-color: var(--gold);
         }
 
         .product-image {
             width: 100%;
-            height: 300px;
+            height: 350px;
             overflow: hidden;
             position: relative;
         }
@@ -495,68 +537,63 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.1) 100%);
+            background: linear-gradient(to bottom, transparent 0%, rgba(212,175,55,0.1) 100%);
         }
 
         .product-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s ease;
+            transition: transform 0.8s ease;
         }
 
         .product-card:hover .product-image img {
-            transform: scale(1.15);
+            transform: scale(1.2);
         }
 
-        .product-badge {
+        .luxury-badge {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--gradient-2);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
+            top: 25px;
+            right: 25px;
+            background: var(--gradient-gold);
+            color: var(--black);
+            padding: 0.6rem 1.2rem;
+            font-size: 0.8rem;
+            font-weight: 700;
             z-index: 2;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .product-info {
-            padding: 2rem;
+            padding: 2.5rem;
             position: relative;
-            z-index: 1;
         }
 
         .product-category {
-            background: var(--gradient-1);
-            color: white;
-            padding: 0.4rem 1rem;
-            border-radius: 15px;
-            font-size: 0.85rem;
+            color: var(--gold-dark);
+            font-size: 0.9rem;
             font-weight: 600;
             margin-bottom: 1rem;
             display: inline-block;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .product-title {
-            font-size: 1.6rem;
-            margin-bottom: 0.8rem;
-            color: var(--text-dark);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--black);
             font-weight: 600;
             line-height: 1.3;
         }
 
-        body.dark-mode .product-title {
-            color: #e2e8f0;
-        }
-
         .product-price {
-            font-size: 2rem;
-            color: var(--secondary);
+            font-size: 2.2rem;
+            color: var(--gold);
             font-weight: 700;
-            margin-bottom: 1.5rem;
-            font-family: 'Playfair Display', serif;
+            margin-bottom: 2rem;
+            font-family: 'Cormorant Garamond', serif;
         }
 
         .product-features {
@@ -568,187 +605,259 @@
         .feature {
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 0.9rem;
-            color: var(--text-light);
-            background: var(--bg-light);
-            padding: 0.5rem 0.8rem;
-            border-radius: 8px;
-        }
-
-        body.dark-mode .feature {
-            background: #1e293b;
-            color: #94a3b8;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--black-medium);
+            background: var(--white);
+            padding: 0.6rem 1rem;
+            border: 1px solid var(--gold-dark);
         }
 
         .feature i {
-            color: var(--primary);
+            color: var(--gold);
         }
 
-        /* Order Form Section */
-        .order-section {
-            padding: 6rem 0;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        /* Gallery Section */
+        .gallery-section {
+            padding: 8rem 0;
+            background: var(--black);
             position: relative;
         }
 
-        body.dark-mode .order-section {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-        }
-
-        .form-container {
-            background: var(--bg-white);
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 4rem 3rem;
-            border-radius: 25px;
-            box-shadow: var(--shadow-lg);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .form-container::before {
+        .gallery-section::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 5px;
-            background: var(--gradient-1);
+            height: 3px;
+            background: var(--gradient-gold);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            height: 300px;
+            cursor: pointer;
+            border: 1px solid var(--gold-dark);
+        }
+
+        .gallery-item:hover {
+            box-shadow: var(--shadow-gold);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10,10,10,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            color: var(--gold);
+            font-size: 3rem;
+        }
+
+        /* Order Form Section */
+        .order-section {
+            padding: 8rem 0;
+            background: var(--cream);
+            position: relative;
+        }
+
+        .order-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-gold);
+        }
+
+        .form-container {
+            background: var(--white);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 5rem 4rem;
+            border: 1px solid var(--gold-dark);
+            position: relative;
+        }
+
+        .form-container::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 3px;
+            background: var(--gradient-gold);
         }
 
         .form-title {
             text-align: center;
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 2.5rem;
-            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            background: var(--gradient-gold);
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            margin-bottom: 3rem;
         }
 
         .form-group {
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
             font-weight: 600;
-            color: var(--text-dark);
-            font-size: 1rem;
-        }
-
-        body.dark-mode .form-group label {
-            color: #e2e8f0;
+            color: var(--black);
+            font-size: 1.1rem;
+            letter-spacing: 1px;
         }
 
         .form-group label i {
-            color: var(--primary);
-            margin-right: 8px;
+            color: var(--gold);
+            margin-right: 10px;
         }
 
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 1rem;
-            border: 2px solid #e5e7eb;
-            border-radius: 12px;
+            padding: 1.2rem;
+            border: 1px solid var(--gold-dark);
+            background: var(--cream);
             font-size: 1rem;
             transition: all 0.3s ease;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Montserrat', sans-serif;
         }
 
         .form-group input:focus,
         .form-group textarea:focus,
         .form-group select:focus {
             outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(99,102,241,0.1);
-        }
-
-        body.dark-mode .form-group input,
-        body.dark-mode .form-group textarea,
-        body.dark-mode .form-group select {
-            background-color: #1e293b;
-            color: #e2e8f0;
-            border-color: #374151;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 2px rgba(212,175,55,0.2);
         }
 
         .form-group textarea {
             resize: vertical;
-            min-height: 120px;
+            min-height: 140px;
         }
 
         .btn-submit {
-            background: var(--gradient-1);
-            color: white;
-            padding: 1.3rem 2.5rem;
+            background: var(--gradient-gold);
+            color: var(--black);
+            padding: 1.5rem 3rem;
             border: none;
-            border-radius: 30px;
-            font-size: 1.15rem;
-            font-weight: 600;
+            font-size: 1.2rem;
+            font-weight: 700;
             cursor: pointer;
             width: 100%;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-glow);
+            transition: all 0.4s ease;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .btn-submit:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(99,102,241,0.4);
+            box-shadow: var(--shadow-gold);
         }
 
         .form-success {
             display: none;
             text-align: center;
-            padding: 3rem;
-            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
-            border-radius: 15px;
+            padding: 4rem;
+            background: var(--cream);
+            border: 2px solid var(--gold);
             margin-top: 2rem;
         }
 
         .form-success.show {
             display: block;
-            animation: fadeInUp 0.6s ease;
+            animation: luxuryFadeIn 0.8s ease;
         }
 
         .form-success i {
-            font-size: 4rem;
-            color: #10b981;
-            margin-bottom: 1.5rem;
+            font-size: 5rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
         }
 
         .form-success h3 {
-            color: #059669;
-            font-size: 2rem;
-            margin-bottom: 1rem;
+            color: var(--gold);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
         }
 
         /* Footer */
         .footer {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            color: white;
-            padding: 5rem 0 2rem;
+            background: var(--black);
+            color: var(--white);
+            padding: 6rem 0 3rem;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-gold);
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 4rem;
+            margin-bottom: 4rem;
         }
 
         .footer-section h3 {
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            font-size: 2rem;
         }
 
         .footer-section p {
-            margin-bottom: 0.8rem;
-            color: #94a3b8;
-            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.9;
         }
 
         .social-links {
@@ -757,31 +866,33 @@
         }
 
         .social-links a {
-            color: white;
-            font-size: 1.8rem;
+            color: var(--gold);
+            font-size: 2rem;
             transition: all 0.3s ease;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
+            border: 1px solid var(--gold-dark);
             border-radius: 50%;
-            background: rgba(99,102,241,0.1);
         }
 
         .social-links a:hover {
-            background: var(--gradient-1);
+            background: var(--gradient-gold);
+            color: var(--black);
             transform: translateY(-5px);
+            box-shadow: var(--shadow-gold);
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 3rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 4rem;
+            border-top: 1px solid var(--gold-dark);
         }
 
         .footer-bottom p {
-            color: #64748b;
+            color: rgba(255,255,255,0.6);
         }
 
         /* Modal */
@@ -792,7 +903,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.8);
+            background-color: rgba(0,0,0,0.9);
             z-index: 2000;
             justify-content: center;
             align-items: center;
@@ -800,67 +911,50 @@
         }
 
         .modal-content {
-            background-color: var(--bg-white);
-            max-width: 1000px;
+            background: var(--white);
+            max-width: 1100px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
-            border-radius: 25px;
+            border: 2px solid var(--gold);
             position: relative;
-            animation: modalSlideIn 0.5s ease;
-        }
-
-        @keyframes modalSlideIn {
-            from {
-                transform: translateY(-50px) scale(0.95);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0) scale(1);
-                opacity: 1;
-            }
+            animation: luxuryFadeIn 0.6s ease;
         }
 
         .modal-close {
             position: absolute;
             top: 20px;
             right: 25px;
-            font-size: 2.5rem;
+            font-size: 3rem;
             cursor: pointer;
-            color: var(--text-dark);
+            color: var(--gold);
             transition: all 0.3s ease;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
+            border: 1px solid var(--gold);
             border-radius: 50%;
-            background: rgba(0,0,0,0.1);
-        }
-
-        body.dark-mode .modal-close {
-            color: #e2e8f0;
         }
 
         .modal-close:hover {
-            color: var(--primary);
+            background: var(--gold);
+            color: var(--black);
             transform: rotate(90deg);
-            background: var(--primary);
-            color: white;
         }
 
         .modal-body {
             display: grid;
-            grid-template-columns: 1.2fr 1fr;
+            grid-template-columns: 1.3fr 1fr;
             gap: 3rem;
-            padding: 3rem;
+            padding: 3.5rem;
         }
 
         .modal-image {
-            height: 450px;
+            height: 500px;
             overflow: hidden;
-            border-radius: 15px;
-            box-shadow: var(--shadow-md);
+            border: 2px solid var(--gold);
         }
 
         .modal-image img {
@@ -870,127 +964,109 @@
         }
 
         .modal-info h2 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 1rem;
-            color: var(--text-dark);
-            font-family: 'Playfair Display', serif;
-        }
-
-        body.dark-mode .modal-info h2 {
-            color: #e2e8f0;
+            color: var(--black);
         }
 
         .modal-category {
-            background: var(--gradient-1);
-            color: white;
-            padding: 0.5rem 1.2rem;
-            border-radius: 20px;
-            font-weight: 600;
+            color: var(--gold-dark);
+            font-size: 1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
             margin-bottom: 1.5rem;
             display: inline-block;
         }
 
         .modal-price {
-            font-size: 2.5rem;
-            color: var(--secondary);
+            font-size: 3rem;
+            color: var(--gold);
             font-weight: 700;
-            margin-bottom: 1.5rem;
-            font-family: 'Playfair Display', serif;
+            margin-bottom: 2rem;
         }
 
         .modal-description {
-            margin-bottom: 2rem;
-            line-height: 1.9;
-            color: var(--text-light);
-        }
-
-        body.dark-mode .modal-description {
-            color: #94a3b8;
+            margin-bottom: 2.5rem;
+            line-height: 2;
+            color: var(--black-medium);
         }
 
         .modal-features h4 {
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-            font-size: 1.3rem;
-        }
-
-        body.dark-mode .modal-features h4 {
-            color: #e2e8f0;
+            margin-bottom: 1.5rem;
+            color: var(--black);
+            font-size: 1.5rem;
         }
 
         .modal-features ul {
             list-style: none;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
         }
 
         .modal-features li {
-            padding: 0.8rem 0;
+            padding: 1rem 0;
             display: flex;
             align-items: center;
-            gap: 12px;
-            color: var(--text-light);
+            gap: 15px;
+            color: var(--black-medium);
+            border-bottom: 1px solid var(--gold-dark);
         }
 
-        body.dark-mode .modal-features li {
-            color: #94a3b8;
+        .modal-features li:last-child {
+            border-bottom: none;
         }
 
         .modal-features li i {
-            color: var(--primary);
-            font-size: 1.2rem;
+            color: var(--gold);
+            font-size: 1.3rem;
         }
 
         .modal-buttons {
             display: grid;
-            gap: 1rem;
+            gap: 1.5rem;
         }
 
         .btn-purchase,
         .btn-email {
-            padding: 1.2rem 2rem;
+            padding: 1.5rem 2.5rem;
             border: none;
-            border-radius: 25px;
             font-size: 1.1rem;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             width: 100%;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .btn-purchase {
-            background: var(--gradient-1);
-            color: white;
-            box-shadow: var(--shadow-glow);
+            background: var(--gradient-gold);
+            color: var(--black);
         }
 
         .btn-purchase:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(99,102,241,0.4);
+            box-shadow: var(--shadow-gold);
         }
 
         .btn-email {
-            background: white;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        body.dark-mode .btn-email {
-            background: var(--bg-white);
+            background: var(--white);
+            color: var(--gold);
+            border: 2px solid var(--gold);
         }
 
         .btn-email:hover {
-            background: var(--primary);
-            color: white;
+            background: var(--gold);
+            color: var(--black);
         }
 
         /* Responsive */
         @media (max-width: 1024px) {
             .product-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             }
 
             .modal-body {
@@ -998,11 +1074,19 @@
             }
 
             .modal-image {
-                height: 350px;
+                height: 400px;
             }
 
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero h1 {
+                font-size: 4rem;
             }
         }
 
@@ -1012,11 +1096,11 @@
             }
 
             .hero-subtitle {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
             }
 
             .section-title {
-                font-size: 2.5rem;
+                font-size: 3.5rem;
             }
 
             .product-grid {
@@ -1024,16 +1108,16 @@
             }
 
             .filters {
-                gap: 0.8rem;
+                gap: 1rem;
             }
 
             .filter-btn {
-                padding: 0.8rem 1.5rem;
+                padding: 1rem 1.8rem;
                 font-size: 0.9rem;
             }
 
             .form-container {
-                padding: 3rem 2rem;
+                padding: 4rem 2rem;
             }
 
             .nav-links {
@@ -1044,36 +1128,43 @@
                 grid-template-columns: 1fr;
             }
 
+            .stat-item::before {
+                display: none;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
             .modal-body {
                 padding: 2rem;
             }
 
             .modal-image {
-                height: 300px;
+                height: 350px;
+            }
+
+            .hero .luxury-tag {
+                letter-spacing: 1px;
+                padding: 0.5rem 1.5rem;
             }
         }
 
-        /* Gradient Text */
-        .gradient-text {
-            background: var(--gradient-1);
-            color: transparent;
-            background-clip: text;
-            -webkit-background-clip: text;
+        /* Sparkles */
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
         }
 
-        /* Premium Badge */
-        .premium-badge {
+        .sparkle {
             position: absolute;
-            top: 20px;
-            left: 20px;
-            background: var(--gradient-2);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            z-index: 2;
-            box-shadow: var(--shadow-sm);
+            width: 3px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 50%;
+            animation: sparkle 2s ease-in-out infinite;
         }
     </style>
 </head>
@@ -1083,12 +1174,13 @@
         <div class="container">
             <nav class="navbar">
                 <div class="logo">
-                    <i class="fas fa-envelope-open-text logo-icon"></i>
-                    <span>UndanganDigital</span>
+                    <i class="fas fa-crown logo-icon"></i>
+                    <span>LuxuryInvites</span>
                 </div>
                 <div class="nav-links">
                     <a href="#home" class="nav-link">Home</a>
                     <a href="#katalog" class="nav-link">Katalog</a>
+                    <a href="#gallery" class="nav-link">Gallery</a>
                     <a href="#order" class="nav-link">Pesan</a>
                     <a href="#kontak" class="nav-link">Kontak</a>
                 </div>
@@ -1101,36 +1193,48 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
+        <div class="hero-pattern"></div>
+        <div class="sparkles">
+            <div class="sparkle" style="top: 20%; left: 10%;"></div>
+            <div class="sparkle" style="top: 60%; left: 80%;"></div>
+            <div class="sparkle" style="top: 40%; left: 90%;"></div>
+        </div>
         <div class="container">
-            <div class="hero-content animate-fade-in-down">
-                <h1>Undangan Digital <span class="gradient-text">Premium</span></h1>
-                <p class="hero-subtitle">Undangan pernikahan digital yang elegan, responsive, dan mudah dibagikan untuk momen spesial Anda</p>
+            <div class="hero-content">
+                <div class="luxury-tag">Exquisite Collection</div>
+                <h1>Undangan <span class="gold-text">Luxury</span></h1>
+                <p class="hero-subtitle">Undangan pernikahan digital premium dengan desain eksklusif untuk momen paling spesial dalam hidup Anda</p>
                 <div class="search-box">
                     <i class="fas fa-search"></i>
-                    <input type="text" id="searchInput" placeholder="Cari template undangan...">
+                    <input type="text" id="searchInput" placeholder="Search premium templates...">
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Divider -->
+    <div class="luxury-divider">
+        <span>◆</span>
+    </div>
+
     <!-- Stats Section -->
-    <section class="stats scroll-reveal">
+    <section class="stats luxury-reveal">
         <div class="stats-grid">
             <div class="stat-item">
-                <div class="stat-number">50+</div>
-                <div class="stat-label">Template Premium</div>
+                <div class="stat-number">100+</div>
+                <div class="stat-label">Luxury Templates</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">5K+</div>
-                <div class="stat-label">K客户an Puas</div>
+                <div class="stat-number">10K+</div>
+                <div class="stat-label">Honored Couples</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">99%</div>
-                <div class="stat-label">Rating Positif</div>
+                <div class="stat-number">99.9%</div>
+                <div class="stat-label">Client Satisfaction</div>
             </div>
             <div class="stat-item">
                 <div class="stat-number">24/7</div>
-                <div class="stat-label">Support Ready</div>
+                <div class="stat-label">Premium Support</div>
             </div>
         </div>
     </section>
@@ -1138,21 +1242,70 @@
     <!-- Katalog Section -->
     <section class="katalog" id="katalog">
         <div class="container">
-            <div class="section-header scroll-reveal">
-                <h2 class="section-title">Template Undangan</h2>
-                <p class="section-subtitle">Pilih template yang sesuai dengan gaya dan personalitas Anda</p>
+            <div class="section-header luxury-reveal">
+                <h2 class="section-title">Premium Collection</h2>
+                <p class="section-subtitle">Discover our exclusive selection of luxury digital invitation templates</p>
             </div>
             
-            <div class="filters scroll-reveal">
-                <button class="filter-btn active" data-filter="all">All Templates</button>
-                <button class="filter-btn" data-filter="minimalis">Minimalis</button>
-                <button class="filter-btn" data-filter="elegan">Elegan</button>
+            <div class="filters luxury-reveal">
+                <button class="filter-btn active" data-filter="all">All Collections</button>
+                <button class="filter-btn" data-filter="minimalis">Minimalist</button>
+                <button class="filter-btn" data-filter="elegan">Elegant</button>
                 <button class="filter-btn" data-filter="modern">Modern</button>
-                <button class="filter-btn" data-filter="romantis">Romantis</button>
+                <button class="filter-btn" data-filter="romantis">Romantic</button>
             </div>
 
             <div class="product-grid" id="productGrid">
-                <!-- Produk akan di-render oleh JavaScript -->
+                <!-- Products will be rendered by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <div class="section-header luxury-reveal">
+                <h2 class="section-title gold-text">Gallery Preview</h2>
+                <p class="section-subtitle">Explore stunning examples of our luxury invitations in real use</p>
+            </div>
+            
+            <div class="gallery-grid luxury-reveal">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=600" alt="Preview 1">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-152085((21256-17451cc330e7?w=600" alt="Preview 2">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600" alt="Preview 3">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1518199266791-5375a8309063?w=600" alt="Preview 4">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600" alt="Preview 5">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1469334034224-c8f07588f(66d?w=600" alt="Preview 6">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1160,71 +1313,71 @@
     <!-- Order Form Section -->
     <section class="order-section" id="order">
         <div class="container">
-            <div class="section-header scroll-reveal">
-                <h2 class="section-title">Pesan Undangan</h2>
-                <p class="section-subtitle">Fill out the form below dan kami akan menghubungi Anda dalam 24 jam</p>
+            <div class="section-header luxury-reveal">
+                <h2 class="section-title">Reserve Your Template</h2>
+                <p class="section-subtitle">Complete the form below and our luxury concierge will assist you within 24 hours</p>
             </div>
             
-            <div class="form-container scroll-reveal">
-                <h3 class="form-title">Form Order</h3>
+            <div class="form-container luxury-reveal">
+                <h3 class="form-title">Luxury Order Form</h3>
                 <form id="orderForm">
                     <div class="form-group">
-                        <label for="name"><i class="fas fa-user"></i> Nama Lengkap</label>
-                        <input type="text" id="name" name="name" required placeholder="Masukkan nama lengkap Anda">
+                        <label for="name"><i class="fas fa-user"></i> Full Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Your elegant name">
                     </div>
                     
                     <div class="form-group">
-                        <label for="email"><i class="fas fa-envelope"></i> Email</label>
-                        <input type="email" id="email" name="email" required placeholder="contoh@email.com">
+                        <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="your@email.com">
                     </div>
                     
                     <div class="form-group">
-                        <label for="phone"><i class="fas fa-phone"></i> Nomor WhatsApp</label>
-                        <input type="tel" id="phone" name="phone" required placeholder="081234567890">
+                        <label for="phone"><i class="fas fa-phone"></i> WhatsApp Number</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="+62 812-3456-7890">
                     </div>
                     
                     <div class="form-group">
-                        <label for="template"><i class="fas fa-envelope-open"></i> Pilih Template</label>
+                        <label for="template"><i class="fas fa-gem"></i> Select Template</label>
                         <select id="template" name="template" required>
-                            <option value="">-- Pilih Template --</option>
-                            <option value="Template Floral Elegance">Template Floral Elegance - Rp 150.000</option>
-                            <option value="Template Minimalis Clean">Template Minimalis Clean - Rp 120.000</option>
-                            <option value="Template Modern Gradient">Template Modern Gradient - Rp 180.000</option>
-                            <option value="Template Romantis Hearts">Template Romantis Hearts - Rp 140.000</option>
-                            <option value="Template Elegant Gold">Template Elegant Gold - Rp 200.000</option>
-                            <option value="Template Nature Boho">Template Nature Boho - Rp 135.000</option>
+                            <option value="">-- Choose Your Template --</option>
+                            <option value="Template Floral Elegance">Floral Elegance - Rp 150.000</option>
+                            <option value="Template Minimalis Clean">Minimalist Clean - Rp 120.000</option>
+                            <option value="Template Modern Gradient">Modern Gradient - Rp 180.000</option>
+                            <option value="Template Romantis Hearts">Romantic Hearts - Rp 140.000</option>
+                            <option value="Template Elegant Gold">Elegant Gold - Rp 200.000</option>
+                            <option value="Template Nature Boho">Nature Boho - Rp 135.000</option>
                         </select>
                     </div>
                     
                     <div class="form-group">
-                        <label for="weddingDate"><i class="fas fa-calendar"></i> Tanggal Pernikahan</label>
+                        <label for="weddingDate"><i class="fas fa-calendar-alt"></i> Wedding Date</label>
                         <input type="date" id="weddingDate" name="weddingDate" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="namaPengantin1"><i class="fas fa-heart"></i> Nama Pengantin 1</label>
-                        <input type="text" id="namaPengantin1" name="namaPengantin1" required placeholder="Nama pengantin pertama">
+                        <label for="namaPengantin1"><i class="fas fa-heart"></i> Bride's Name</label>
+                        <input type="text" id="namaPengantin1" name="namaPengantin1" required placeholder="Beautiful bride name">
                     </div>
                     
                     <div class="form-group">
-                        <label for="namaPengantin2"><i class="fas fa-heart"></i> Nama Pengantin 2</label>
-                        <input type="text" id="namaPengantin2" name="namaPengantin2" required placeholder="Nama pengantin kedua">
+                        <label for="namaPengantin2"><i class="fas fa-heart"></i> Groom's Name</label>
+                        <input type="text" id="namaPengantin2" name="namaPengantin2" required placeholder="Lovely groom name">
                     </div>
                     
                     <div class="form-group">
-                        <label for="message"><i class="fas fa-comment"></i> Pesan Tambahan (Opsional)</label>
-                        <textarea id="message" name="message" placeholder="Tulis pesan atau permintaan khusus Anda..."></textarea>
+                        <label for="message"><i class="fas fa-comment"></i> Special Requests (Optional)</label>
+                        <textarea id="message" name="message" placeholder="Share your unique preferences..."></textarea>
                     </div>
                     
                     <button type="submit" class="btn-submit">
-                        <i class="fas fa-paper-plane"></i> Kirim Order
+                        <i class="fas fa-crown"></i> Reserve Now
                     </button>
                 </form>
                 
                 <div class="form-success" id="formSuccess">
                     <i class="fas fa-check-circle"></i>
-                    <h3>Order Berhasil Dib必胜!</h3>
-                    <p>Terima kasih telah memesan undangan digital kami. Kami akan menghubungi Anda via email/WA dalam 24 jam.</p>
+                    <h3>Reservation Confirmed</h3>
+                    <p>Thank you for choosing LuxuryInvites. Our concierge will contact you via email/WhatsApp within 24 hours.</p>
                 </div>
             </div>
         </div>
@@ -1235,31 +1388,32 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>UndanganDigital</h3>
-                    <p>Undangan pernikahan digital premium untuk momen spesial Anda. Kami menyediakan template berkualitas dengan desain elegan dan modern.</p>
+                    <h3>LuxuryInvites</h3>
+                    <p>Menyediakan undangan pernikahan digital premium dengan desain eksklusif dan mewah untuk momen paling spesial dalam hidup Anda. Setiap detail dirancang dengan penuh kecintaan.</p>
                 </div>
                 <div class="footer-section">
-                    <h3>Kontak Kami</h3>
+                    <h3>Luxury Concierge</h3>
                     <p><i class="fas fa-envelope"></i> chio@example.com</p>
                     <p><i class="fas fa-phone"></i> +62 812-3456-7890</p>
                     <p><i class="fas fa-map-marker-alt"></i> Surabaya, East Java, Indonesia</p>
                 </div>
                 <div class="footer-section">
-                    <h3>Media Sosial</h3>
+                    <h3>Connect With Us</h3>
                     <div class="social-links">
                         <a href="https://github.com/chio" target="_blank"><i class="fab fa-github"></i></a>
                         <a href="https://instagram.com/chio" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="https://facebook.com/chio" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://linkedin.com/in/chio" target="_blank"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 UndanganDigital by Chio. All rights reserved. | Designed with <i class="fas fa-heart" style="color: var(--accent);"></i> in Indonesia</p>
+                <p>&copy; 2026 LuxuryInvites by Chio. All Rights Reserved. | Crafted with <i class="fas fa-heart" style="color: var(--gold);"></i> in Indonesia</p>
             </div>
         </div>
     </footer>
 
-    <!-- Modal Detail Produk -->
+    <!-- Modal -->
     <div class="modal" id="productModal">
         <div class="modal-content">
             <span class="modal-close" id="modalClose">&times;</span>
@@ -1273,15 +1427,15 @@
                     <p class="modal-price" id="modalPrice"></p>
                     <p class="modal-description" id="modalDescription"></p>
                     <div class="modal-features">
-                        <h4>Fitur Premium:</h4>
+                        <h4>Luxury Features:</h4>
                         <ul id="modalFeatures"></ul>
                     </div>
                     <div class="modal-buttons">
                         <button class="btn-purchase" id="btnPurchase">
-                            <i class="fas fa-shopping-cart"></i> Beli via WhatsApp
+                            <i class="fas fa-shopping-bag"></i> Purchase via WhatsApp
                         </button>
                         <button class="btn-email" id="btnEmailOrder">
-                            <i class="fas fa-envelope"></i> Pesan via Email
+                            <i class="fas fa-envelope"></i> Reserve via Email
                         </button>
                     </div>
                 </div>
@@ -1290,9 +1444,7 @@
     </div>
 
     <script>
-        // ==========================================
-        // ⚙️ CONFIGURATION - GANTI DI SINI
-        // ==========================================
+        // Configuration
         const CONFIG = {
             whatsappNumber: '6281234567890',
             email: 'chio@example.com',
@@ -1306,31 +1458,31 @@
             }
         };
 
-        // Data Produk
+        // Products
         const products = [
             {
                 id: 1,
-                title: "Template Floral Elegance",
+                title: "Floral Elegance",
                 category: "elegan",
                 price: CONFIG.prices['Template Floral Elegance'],
                 image: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=500&h=500&fit=crop",
-                description: "Template undangan digital dengan desain floral yang elegan dan premium. Cocok untuk pernikahan klasik dengan sentuhan alam.",
-                features: ["Responsive mobile design", "Dark mode support", "Customizable nama & tanggal", "GPS integration", "Countdown timer", "Form konfirmasi kehadiran"],
+                description: "Template undangan digital dengan desain floral yang elegan dan premium. Cocok untuk pernikahan klasik dengan sentuhan alam yang mewah.",
+                features: ["Responsive mobile design", "Dark mode support", "Customizable names & date", "GPS integration", "Countdown timer", "Attendance form"],
                 badge: "Premium"
             },
             {
                 id: 2,
-                title: "Template Minimalis Clean",
+                title: "Minimalist Clean",
                 category: "minimalis",
                 price: CONFIG.prices['Template Minimalis Clean'],
                 image: "https://images.unsplash.com/photo-1520854221256-17451cc330e7?w=500&h=500&fit=crop",
-                description: "Desain minimalis yang clean dan modern. Fokus pada konten dengan whitespace yang optimal untuk kesan premium.",
+                description: "Desain minimalis yang clean dan modern. Fokus pada konten dengan whitespace optimal untuk kesan ultra-premium.",
                 features: ["Mobile-first design", "Fast loading", "Easy customization", "Google Maps", "Photo gallery", "WhatsApp button"],
                 badge: "Best Seller"
             },
             {
                 id: 3,
-                title: "Template Modern Gradient",
+                title: "Modern Gradient",
                 category: "modern",
                 price: CONFIG.prices['Template Modern Gradient'],
                 image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=500&h=500&fit=crop",
@@ -1340,31 +1492,31 @@
             },
             {
                 id: 4,
-                title: "Template Romantis Hearts",
+                title: "Romantic Hearts",
                 category: "romantis",
                 price: CONFIG.prices['Template Romantis Hearts'],
                 image: "https://images.unsplash.com/photo-1518199266791-5375a8309063?w=500&h=500&fit=crop",
-                description: "Desain romantis dengan elemen hearts dan soft colors. Menampilkan cinta Anda dengan cara yang paling manis.",
+                description: "Desain romantis dengan elemen hearts dan soft colors. Menampilkan cinta Anda dengan cara yang paling manis dan elegan.",
                 features: ["Heart animations", "Soft palette", "Love story", "Photo carousel", "Gift list", "Email notification"],
                 badge: null
             },
             {
                 id: 5,
-                title: "Template Elegant Gold",
+                title: "Elegant Gold",
                 category: "elegan",
                 price: CONFIG.prices['Template Elegant Gold'],
                 image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=500&h=500&fit=crop",
-                description: "Premium template dengan sentuhan gold dan desain luxurious. Untuk pernikahan yang mewah dan eksklusif.",
+                description: "Premium template dengan sentuhan gold dan desain luxurious. Untuk pernikahan yang mewah dan eksklusif banget.",
                 features: ["Gold accent", "Luxury animations", "VIP feature", "Parking map", "Hotel recommendations", "Live chat"],
                 badge: "Luxury"
             },
             {
                 id: 6,
-                title: "Template Nature Boho",
+                title: "Nature Boho",
                 category: "minimalis",
                 price: CONFIG.prices['Template Nature Boho'],
                 image: "https://images.unsplash.com/photo-1469334034224-c8f07588f66d?w=500&h=500&fit=crop",
-                description: "Theme bohemian dengan elemen nature yang warm dan inviting. Perfect untuk pernikahan outdoor atau rustic.",
+                description: "Theme bohemian dengan elemen nature yang warm dan inviting. Perfect untuk pernikahan outdoor atau rustic yang elegant.",
                 features: ["Boho elements", "Nature illustrations", "Warm scheme", "Rustic animations", "Outdoor map", "Playlist"],
                 badge: null
             }
@@ -1386,7 +1538,7 @@
         const formSuccess = document.getElementById('formSuccess');
         const header = document.querySelector('.header');
 
-        // Header Scroll Effect
+        // Header Scroll
         window.addEventListener('scroll', () => {
             if (window.scrollY > 100) {
                 header.classList.add('scrolled');
@@ -1405,8 +1557,8 @@
             });
 
             productGrid.innerHTML = filtered.map(p => `
-                <div class="product-card scroll-reveal" data-id="${p.id}">
-                    ${p.badge ? `<div class="product-badge">${p.badge}</div>` : ''}
+                <div class="product-card luxury-reveal" data-id="${p.id}">
+                    ${p.badge ? `<div class="luxury-badge">${p.badge}</div>` : ''}
                     <div class="product-image">
                         <img src="${p.image}" alt="${p.title}">
                     </div>
@@ -1417,13 +1569,13 @@
                         <div class="product-features">
                             <div class="feature"><i class="fas fa-mobile-alt"></i> Responsive</div>
                             <div class="feature"><i class="fas fa-moon"></i> Dark Mode</div>
-                            <div class="feature"><i class="fas fa-palette"></i> Customizable</div>
+                            <div class="feature"><i class="fas fa-gem"></i> Premium</div>
                         </div>
                     </div>
                 </div>
             `).join('');
 
-            initScrollAnimations();
+            initLuxuryReveal();
         }
 
         // Filters & Search
@@ -1454,16 +1606,16 @@
             darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
         }
 
-        // Scroll Animations
-        function initScrollAnimations() {
-            const elements = document.querySelectorAll('.scroll-reveal');
+        // Luxury Reveal Animation
+        function initLuxuryReveal() {
+            const elements = document.querySelectorAll('.luxury-reveal');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('revealed');
                     }
                 });
-            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+            }, { threshold: 0.1, rootMargin: '0px 0px -80px 0px' });
 
             elements.forEach(el => observer.observe(el));
         }
@@ -1478,7 +1630,7 @@
             document.getElementById('modalCategory').textContent = p.category;
             document.getElementById('modalPrice').textContent = p.price;
             document.getElementById('modalDescription').textContent = p.description;
-            document.getElementById('modalFeatures').innerHTML = p.features.map(f => `<li><i class="fas fa-check-circle"></i> ${f}</li>`).join('');
+            document.getElementById('modalFeatures').innerHTML = p.features.map(f => `<li><i class="fas fa-check"></i> ${f}</li>`).join('');
             
             productModal.style.display = 'flex';
         }
@@ -1496,7 +1648,7 @@
         // WhatsApp & Email
         document.getElementById('btnPurchase').addEventListener('click', () => {
             if (!selectedProduct) return;
-            const msg = `Halo, ingin beli template:\n\n📦 ${selectedProduct.title}\n💰 ${selectedProduct.price}\n\nBisa info lebih lanjut?`;
+            const msg = `Hello, I'd like to purchase:\n\n📦 ${selectedProduct.title}\n💰 ${selectedProduct.price}\n\nPlease provide more information.`;
             window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank');
         });
 
@@ -1521,7 +1673,7 @@
                 msg: document.getElementById('message').value
             };
             
-            const msg = `🎉 ORDER UNDANGAN DIGITAL 🎉\n\n👤 ${fd.name}\n📧 ${fd.email}\n📱 ${fd.phone}\n\n📦 ${fd.template}\n📅 ${fd.weddingDate}\n\n💕 ${fd.p1} & ${fd.p2}\n\n💬 ${fd.msg || '-'}`;
+            const msg = `🎉 LUXURY INVITATION RESERVATION 🎉\n\n👤 ${fd.name}\n📧 ${fd.email}\n📱 ${fd.phone}\n\n📦 ${fd.template}\n📅 ${fd.weddingDate}\n\n💕 ${fd.p1} & ${fd.p2}\n\n💬 ${fd.msg || 'No special requests'}`;
             window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank');
             
             formSuccess.classList.add('show');
@@ -1531,7 +1683,7 @@
 
         // Init
         renderProducts();
-        initScrollAnimations();
+        initLuxuryReveal();
     </script>
 </body>
 </html>
