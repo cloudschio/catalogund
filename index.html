@@ -3,9 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Katalog Undangan Digital - Chio</title>
+    <title>Katalog Undangan Digital - Premium Collection</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --accent: #f59e0b;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --gradient-1: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a78bfa 100%);
+            --gradient-2: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #fcd34d 100%);
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.12);
+            --shadow-lg: 0 16px 48px rgba(0,0,0,0.16);
+            --shadow-glow: 0 8px 32px rgba(99,102,241,0.3);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,84 +31,141 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
-            transition: all 0.3s ease;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        .animate-fade-in-up {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .animate-fade-in-down {
+            opacity: 0;
+            animation: fadeInDown 0.8s ease forwards;
+        }
+
+        .animate-scale-in {
+            opacity: 0;
+            animation: scaleIn 0.6s ease forwards;
         }
 
         /* Scroll Animations */
-        .fade-in {
+        .scroll-reveal {
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transition: all 0.8s ease;
         }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .slide-up {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .slide-up.visible {
+        .scroll-reveal.revealed {
             opacity: 1;
             transform: translateY(0);
         }
 
         /* Dark Mode */
         body.dark-mode {
-            background-color: #1a1a1a;
-            color: #f0f0f0;
+            background-color: #0f172a;
+            color: #e2e8f0;
         }
 
         body.dark-mode .header {
-            background-color: #2d2d2d;
+            background-color: #1e293b;
         }
 
         body.dark-mode .hero {
-            background-color: #2d2d2d;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
         }
 
         body.dark-mode .product-card {
-            background-color: #2d2d2d;
-        }
-
-        body.dark-mode .modal-content {
-            background-color: #2d2d2d;
+            background-color: #1e293b;
         }
 
         body.dark-mode .form-container {
-            background-color: #2d2d2d;
+            background-color: #1e293b;
         }
 
-        body.dark-mode .form-group input,
-        body.dark-mode .form-group textarea,
-        body.dark-mode .form-group select {
-            background-color: #3a3a3a;
-            color: #f0f0f0;
-            border-color: #555;
+        body.dark-mode .modal-content {
+            background-color: #1e293b;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        body.dark-mode .section-bg {
+            background-color: #1e293b;
         }
 
         /* Header */
         .header {
-            background-color: #fff;
-            padding: 1rem 0;
+            background-color: var(--bg-white);
+            padding: 1.5rem 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            padding: 1rem 0;
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+
+        body.dark-mode .header.scrolled {
+            background-color: rgba(30, 41, 59, 0.98);
         }
 
         .navbar {
@@ -102,46 +177,116 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #6366f1;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        body.dark-mode .nav-link {
+            color: #e2e8f0;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
         }
 
         .dark-mode-toggle {
-            background: none;
+            background: var(--gradient-1);
             border: none;
             cursor: pointer;
-            font-size: 1.5rem;
-            color: #333;
-            padding: 0.5rem;
-            transition: transform 0.3s ease;
-        }
-
-        body.dark-mode .dark-mode-toggle {
-            color: #f0f0f0;
+            font-size: 1.3rem;
+            color: white;
+            padding: 0.7rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .dark-mode-toggle:hover {
-            transform: rotate(30deg);
+            transform: rotate(30deg) scale(1.1);
+            box-shadow: var(--shadow-glow);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            background: var(--gradient-1);
             color: white;
-            padding: 4rem 0;
+            padding: 8rem 0 6rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3Cg%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 2px 4px 8px rgba(0,0,0,0.2);
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            font-weight: 300;
         }
 
         .search-box {
@@ -149,14 +294,22 @@
             align-items: center;
             background: white;
             border-radius: 50px;
-            padding: 0.5rem 1rem;
-            max-width: 500px;
+            padding: 0.8rem 2rem;
+            max-width: 600px;
             margin: 0 auto;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+        }
+
+        .search-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
         }
 
         .search-box i {
-            color: #6366f1;
-            margin-right: 10px;
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-right: 15px;
         }
 
         .search-box input {
@@ -164,19 +317,82 @@
             outline: none;
             width: 100%;
             padding: 0.5rem;
+            font-size: 1.1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--bg-white);
+            padding: 4rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
             font-size: 1rem;
+            color: var(--text-light);
+            font-weight: 500;
         }
 
         /* Katalog Section */
         .katalog {
-            padding: 4rem 0;
+            padding: 6rem 0;
+            background: var(--bg-light);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
         }
 
         .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: #6366f1;
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-1);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-top: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .filters {
@@ -188,86 +404,159 @@
         }
 
         .filter-btn {
-            padding: 0.8rem 1.5rem;
-            border: 2px solid #6366f1;
+            padding: 1rem 2rem;
+            border: 2px solid var(--primary);
             background: none;
-            color: #6366f1;
+            color: var(--primary);
             cursor: pointer;
-            border-radius: 25px;
+            border-radius: 30px;
             font-weight: 600;
+            font-size: 1rem;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .filter-btn:hover::before,
+        .filter-btn.active::before {
+            opacity: 1;
         }
 
         .filter-btn:hover,
         .filter-btn.active {
-            background: #6366f1;
             color: white;
+            border-color: transparent;
         }
 
         /* Product Grid */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .product-card {
-            background: white;
-            border-radius: 15px;
+            background: var(--bg-white);
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s ease;
             cursor: pointer;
+            position: relative;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-1);
+            opacity: 0;
+            z-index: 10;
+            transition: opacity 0.4s ease;
         }
 
         .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .product-card:hover::before {
+            opacity: 0.1;
         }
 
         .product-image {
             width: 100%;
-            height: 250px;
+            height: 300px;
             overflow: hidden;
+            position: relative;
+        }
+
+        .product-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.1) 100%);
         }
 
         .product-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s ease;
+            transition: transform 0.6s ease;
         }
 
         .product-card:hover .product-image img {
-            transform: scale(1.1);
+            transform: scale(1.15);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--gradient-2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 2;
         }
 
         .product-info {
-            padding: 1.5rem;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
         }
 
         .product-category {
-            color: #6366f1;
-            font-size: 0.9rem;
+            background: var(--gradient-1);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
         }
 
         .product-title {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: #333;
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            line-height: 1.3;
         }
 
         body.dark-mode .product-title {
-            color: #f0f0f0;
+            color: #e2e8f0;
         }
 
         .product-price {
-            font-size: 1.5rem;
-            color: #8b5cf6;
-            font-weight: bold;
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            color: var(--secondary);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            font-family: 'Playfair Display', serif;
         }
 
         .product-features {
@@ -279,158 +568,220 @@
         .feature {
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
             font-size: 0.9rem;
-            color: #666;
+            color: var(--text-light);
+            background: var(--bg-light);
+            padding: 0.5rem 0.8rem;
+            border-radius: 8px;
         }
 
         body.dark-mode .feature {
-            color: #aaa;
+            background: #1e293b;
+            color: #94a3b8;
+        }
+
+        .feature i {
+            color: var(--primary);
         }
 
         /* Order Form Section */
         .order-section {
-            padding: 4rem 0;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
         }
 
         body.dark-mode .order-section {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
         }
 
         .form-container {
-            background: white;
-            max-width: 600px;
+            background: var(--bg-white);
+            max-width: 700px;
             margin: 0 auto;
-            padding: 3rem 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 4rem 3rem;
+            border-radius: 25px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-1);
         }
 
         .form-title {
             text-align: center;
-            font-size: 2rem;
-            color: #6366f1;
-            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 2.5rem;
+            font-family: 'Playfair Display', serif;
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             font-weight: 600;
-            color: #333;
+            color: var(--text-dark);
+            font-size: 1rem;
         }
 
         body.dark-mode .form-group label {
-            color: #f0f0f0;
+            color: #e2e8f0;
+        }
+
+        .form-group label i {
+            color: var(--primary);
+            margin-right: 8px;
         }
 
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #ddd;
-            border-radius: 10px;
+            padding: 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
             font-size: 1rem;
-            transition: border-color 0.3s ease;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
         }
 
         .form-group input:focus,
         .form-group textarea:focus,
         .form-group select:focus {
             outline: none;
-            border-color: #6366f1;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99,102,241,0.1);
+        }
+
+        body.dark-mode .form-group input,
+        body.dark-mode .form-group textarea,
+        body.dark-mode .form-group select {
+            background-color: #1e293b;
+            color: #e2e8f0;
+            border-color: #374151;
         }
 
         .form-group textarea {
             resize: vertical;
-            min-height: 100px;
+            min-height: 120px;
         }
 
         .btn-submit {
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            background: var(--gradient-1);
             color: white;
-            padding: 1rem 2rem;
+            padding: 1.3rem 2.5rem;
             border: none;
-            border-radius: 25px;
-            font-size: 1.1rem;
+            border-radius: 30px;
+            font-size: 1.15rem;
             font-weight: 600;
             cursor: pointer;
             width: 100%;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-glow);
         }
 
         .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(99,102,241,0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(99,102,241,0.4);
         }
 
         .form-success {
             display: none;
             text-align: center;
-            padding: 2rem;
-            background: #d4edda;
-            border-radius: 10px;
-            margin-top: 1rem;
+            padding: 3rem;
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border-radius: 15px;
+            margin-top: 2rem;
         }
 
         .form-success.show {
             display: block;
+            animation: fadeInUp 0.6s ease;
         }
 
         .form-success i {
-            font-size: 3rem;
-            color: #28a745;
+            font-size: 4rem;
+            color: #10b981;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-success h3 {
+            color: #059669;
+            font-size: 2rem;
             margin-bottom: 1rem;
         }
 
         /* Footer */
         .footer {
-            background-color: #2d2d2d;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
             color: white;
-            padding: 3rem 0 1rem;
+            padding: 5rem 0 2rem;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
         }
 
         .footer-section h3 {
-            color: #6366f1;
-            margin-bottom: 1rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            font-family: 'Playfair Display', serif;
         }
 
         .footer-section p {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            color: #94a3b8;
+            line-height: 1.8;
         }
 
         .social-links {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
         }
 
         .social-links a {
             color: white;
-            font-size: 1.5rem;
-            transition: color 0.3s ease;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(99,102,241,0.1);
         }
 
         .social-links a:hover {
-            color: #6366f1;
+            background: var(--gradient-1);
+            transform: translateY(-5px);
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid #444;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-bottom p {
+            color: #64748b;
         }
 
         /* Modal */
@@ -441,59 +792,75 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.7);
+            background-color: rgba(0,0,0,0.8);
             z-index: 2000;
             justify-content: center;
             align-items: center;
+            padding: 2rem;
         }
 
         .modal-content {
-            background-color: white;
-            max-width: 900px;
-            width: 90%;
+            background-color: var(--bg-white);
+            max-width: 1000px;
+            width: 100%;
             max-height: 90vh;
             overflow-y: auto;
-            border-radius: 15px;
+            border-radius: 25px;
             position: relative;
-            animation: modalSlideIn 0.3s ease;
+            animation: modalSlideIn 0.5s ease;
         }
 
         @keyframes modalSlideIn {
             from {
-                transform: translateY(-50px);
+                transform: translateY(-50px) scale(0.95);
                 opacity: 0;
             }
             to {
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
                 opacity: 1;
             }
         }
 
         .modal-close {
             position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 2rem;
+            top: 20px;
+            right: 25px;
+            font-size: 2.5rem;
             cursor: pointer;
-            color: #333;
-            transition: color 0.3s ease;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.1);
+        }
+
+        body.dark-mode .modal-close {
+            color: #e2e8f0;
         }
 
         .modal-close:hover {
-            color: #6366f1;
+            color: var(--primary);
+            transform: rotate(90deg);
+            background: var(--primary);
+            color: white;
         }
 
         .modal-body {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            padding: 2rem;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 3rem;
+            padding: 3rem;
         }
 
         .modal-image {
-            height: 400px;
+            height: 450px;
             overflow: hidden;
-            border-radius: 10px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
         }
 
         .modal-image img {
@@ -503,111 +870,127 @@
         }
 
         .modal-info h2 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            font-family: 'Playfair Display', serif;
         }
 
         body.dark-mode .modal-info h2 {
-            color: #f0f0f0;
+            color: #e2e8f0;
         }
 
         .modal-category {
-            color: #6366f1;
+            background: var(--gradient-1);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
         }
 
         .modal-price {
-            font-size: 2rem;
-            color: #8b5cf6;
-            font-weight: bold;
-            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            color: var(--secondary);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            font-family: 'Playfair Display', serif;
         }
 
         .modal-description {
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
+            margin-bottom: 2rem;
+            line-height: 1.9;
+            color: var(--text-light);
+        }
+
+        body.dark-mode .modal-description {
+            color: #94a3b8;
         }
 
         .modal-features h4 {
-            margin-bottom: 0.5rem;
-            color: #333;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            font-size: 1.3rem;
         }
 
         body.dark-mode .modal-features h4 {
-            color: #f0f0f0;
+            color: #e2e8f0;
         }
 
         .modal-features ul {
             list-style: none;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
 
         .modal-features li {
-            padding: 0.5rem 0;
+            padding: 0.8rem 0;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            color: var(--text-light);
+        }
+
+        body.dark-mode .modal-features li {
+            color: #94a3b8;
         }
 
         .modal-features li i {
-            color: #6366f1;
+            color: var(--primary);
+            font-size: 1.2rem;
         }
 
-        .btn-purchase {
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-            color: white;
-            padding: 1rem 2rem;
+        .modal-buttons {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .btn-purchase,
+        .btn-email {
+            padding: 1.2rem 2rem;
             border: none;
             border-radius: 25px;
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             width: 100%;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-purchase {
+            background: var(--gradient-1);
+            color: white;
+            box-shadow: var(--shadow-glow);
         }
 
         .btn-purchase:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(99,102,241,0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(99,102,241,0.4);
         }
 
         .btn-email {
             background: white;
-            color: #6366f1;
-            padding: 1rem 2rem;
-            border: 2px solid #6366f1;
-            border-radius: 25px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            transition: all 0.3s ease;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        body.dark-mode .btn-email {
+            background: var(--bg-white);
         }
 
         .btn-email:hover {
-            background: #6366f1;
+            background: var(--primary);
             color: white;
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
+        @media (max-width: 1024px) {
             .product-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             }
 
             .modal-body {
@@ -615,21 +998,82 @@
             }
 
             .modal-image {
-                height: 300px;
+                height: 350px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
             }
 
             .filters {
-                gap: 0.5rem;
+                gap: 0.8rem;
             }
 
             .filter-btn {
-                padding: 0.6rem 1rem;
+                padding: 0.8rem 1.5rem;
                 font-size: 0.9rem;
             }
 
             .form-container {
-                padding: 2rem 1.5rem;
+                padding: 3rem 2rem;
             }
+
+            .nav-links {
+                display: none;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-body {
+                padding: 2rem;
+            }
+
+            .modal-image {
+                height: 300px;
+            }
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: var(--gradient-1);
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+
+        /* Premium Badge */
+        .premium-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--gradient-2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            z-index: 2;
+            box-shadow: var(--shadow-sm);
         }
     </style>
 </head>
@@ -639,8 +1083,14 @@
         <div class="container">
             <nav class="navbar">
                 <div class="logo">
-                    <i class="fas fa-envelope-open-text"></i>
+                    <i class="fas fa-envelope-open-text logo-icon"></i>
                     <span>UndanganDigital</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#katalog" class="nav-link">Katalog</a>
+                    <a href="#order" class="nav-link">Pesan</a>
+                    <a href="#kontak" class="nav-link">Kontak</a>
                 </div>
                 <button class="dark-mode-toggle" id="darkModeToggle">
                     <i class="fas fa-moon"></i>
@@ -650,28 +1100,57 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero fade-in">
+    <section class="hero" id="home">
         <div class="container">
-            <h1>Undangan Digital Premium</h1>
-            <p>Undangan pernikahan digital yang elegan, responsive, dan mudah dibagikan</p>
-            <div class="search-box">
-                <i class="fas fa-search"></i>
-                <input type="text" id="searchInput" placeholder="Cari Template Undangan...">
+            <div class="hero-content animate-fade-in-down">
+                <h1>Undangan Digital <span class="gradient-text">Premium</span></h1>
+                <p class="hero-subtitle">Undangan pernikahan digital yang elegan, responsive, dan mudah dibagikan untuk momen spesial Anda</p>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Cari template undangan...">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats scroll-reveal">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Template Premium</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">5K+</div>
+                <div class="stat-label">K客户an Puas</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">99%</div>
+                <div class="stat-label">Rating Positif</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Support Ready</div>
             </div>
         </div>
     </section>
 
     <!-- Katalog Section -->
-    <section class="katalog slide-up">
+    <section class="katalog" id="katalog">
         <div class="container">
-            <h2 class="section-title">Template Undangan</h2>
-            <div class="filters">
-                <button class="filter-btn active" data-filter="all">All</button>
+            <div class="section-header scroll-reveal">
+                <h2 class="section-title">Template Undangan</h2>
+                <p class="section-subtitle">Pilih template yang sesuai dengan gaya dan personalitas Anda</p>
+            </div>
+            
+            <div class="filters scroll-reveal">
+                <button class="filter-btn active" data-filter="all">All Templates</button>
                 <button class="filter-btn" data-filter="minimalis">Minimalis</button>
                 <button class="filter-btn" data-filter="elegan">Elegan</button>
                 <button class="filter-btn" data-filter="modern">Modern</button>
                 <button class="filter-btn" data-filter="romantis">Romantis</button>
             </div>
+
             <div class="product-grid" id="productGrid">
                 <!-- Produk akan di-render oleh JavaScript -->
             </div>
@@ -679,10 +1158,14 @@
     </section>
 
     <!-- Order Form Section -->
-    <section class="order-section fade-in">
+    <section class="order-section" id="order">
         <div class="container">
-            <h2 class="section-title">Pesan Undangan Digital</h2>
-            <div class="form-container">
+            <div class="section-header scroll-reveal">
+                <h2 class="section-title">Pesan Undangan</h2>
+                <p class="section-subtitle">Fill out the form below dan kami akan menghubungi Anda dalam 24 jam</p>
+            </div>
+            
+            <div class="form-container scroll-reveal">
                 <h3 class="form-title">Form Order</h3>
                 <form id="orderForm">
                     <div class="form-group">
@@ -748,28 +1231,30 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer slide-up">
+    <footer class="footer" id="kontak">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>UndanganDigital</h3>
-                    <p>Undangan pernikahan digital premium untuk momen spesial Anda</p>
+                    <p>Undangan pernikahan digital premium untuk momen spesial Anda. Kami menyediakan template berkualitas dengan desain elegan dan modern.</p>
                 </div>
                 <div class="footer-section">
-                    <h3>Kontak</h3>
+                    <h3>Kontak Kami</h3>
                     <p><i class="fas fa-envelope"></i> chio@example.com</p>
                     <p><i class="fas fa-phone"></i> +62 812-3456-7890</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Surabaya, East Java, Indonesia</p>
                 </div>
                 <div class="footer-section">
                     <h3>Media Sosial</h3>
                     <div class="social-links">
                         <a href="https://github.com/chio" target="_blank"><i class="fab fa-github"></i></a>
                         <a href="https://instagram.com/chio" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com/chio" target="_blank"><i class="fab fa-facebook"></i></a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 UndanganDigital by Chio. All rights reserved.</p>
+                <p>&copy; 2026 UndanganDigital by Chio. All rights reserved. | Designed with <i class="fas fa-heart" style="color: var(--accent);"></i> in Indonesia</p>
             </div>
         </div>
     </footer>
@@ -784,19 +1269,21 @@
                 </div>
                 <div class="modal-info">
                     <h2 id="modalTitle"></h2>
-                    <p class="modal-category" id="modalCategory"></p>
+                    <span class="modal-category" id="modalCategory"></span>
                     <p class="modal-price" id="modalPrice"></p>
                     <p class="modal-description" id="modalDescription"></p>
                     <div class="modal-features">
-                        <h4>Fitur:</h4>
+                        <h4>Fitur Premium:</h4>
                         <ul id="modalFeatures"></ul>
                     </div>
-                    <button class="btn-purchase" id="btnPurchase">
-                        <i class="fas fa-shopping-cart"></i> Beli via WhatsApp
-                    </button>
-                    <button class="btn-email" id="btnEmailOrder">
-                        <i class="fas fa-envelope"></i> Pesan via Email
-                    </button>
+                    <div class="modal-buttons">
+                        <button class="btn-purchase" id="btnPurchase">
+                            <i class="fas fa-shopping-cart"></i> Beli via WhatsApp
+                        </button>
+                        <button class="btn-email" id="btnEmailOrder">
+                            <i class="fas fa-envelope"></i> Pesan via Email
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -807,8 +1294,8 @@
         // ⚙️ CONFIGURATION - GANTI DI SINI
         // ==========================================
         const CONFIG = {
-            whatsappNumber: '6281234567890',  // Ganti dengan nomor WA kamu (format: 628...)
-            email: 'chio@example.com',         // Ganti dengan email kamu
+            whatsappNumber: '6281234567890',
+            email: 'chio@example.com',
             prices: {
                 'Template Floral Elegance': 'Rp 150.000',
                 'Template Minimalis Clean': 'Rp 120.000',
@@ -819,7 +1306,7 @@
             }
         };
 
-        // Data Produk Undangan Digital
+        // Data Produk
         const products = [
             {
                 id: 1,
@@ -828,14 +1315,8 @@
                 price: CONFIG.prices['Template Floral Elegance'],
                 image: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=500&h=500&fit=crop",
                 description: "Template undangan digital dengan desain floral yang elegan dan premium. Cocok untuk pernikahan klasik dengan sentuhan alam.",
-                features: [
-                    "Responsive mobile design",
-                    "Dark mode support",
-                    "Customizable nama & tanggal",
-                    "GPS integration untuk lokasi",
-                    "Countdown timer",
-                    "Form konfirmasi kehadiran"
-                ]
+                features: ["Responsive mobile design", "Dark mode support", "Customizable nama & tanggal", "GPS integration", "Countdown timer", "Form konfirmasi kehadiran"],
+                badge: "Premium"
             },
             {
                 id: 2,
@@ -844,14 +1325,8 @@
                 price: CONFIG.prices['Template Minimalis Clean'],
                 image: "https://images.unsplash.com/photo-1520854221256-17451cc330e7?w=500&h=500&fit=crop",
                 description: "Desain minimalis yang clean dan modern. Fokus pada konten dengan whitespace yang optimal untuk kesan premium.",
-                features: [
-                    "Mobile-first design",
-                    "Fast loading",
-                    "Easy customization",
-                    "Google Maps integration",
-                    "Photo gallery",
-                    "WhatsApp button"
-                ]
+                features: ["Mobile-first design", "Fast loading", "Easy customization", "Google Maps", "Photo gallery", "WhatsApp button"],
+                badge: "Best Seller"
             },
             {
                 id: 3,
@@ -860,14 +1335,8 @@
                 price: CONFIG.prices['Template Modern Gradient'],
                 image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=500&h=500&fit=crop",
                 description: "Template dengan gradient warna modern dan animasi smooth. Perfect untuk couple yang ingin kesan trendy dan fresh.",
-                features: [
-                    "Gradient animations",
-                    "Smooth scroll effects",
-                    "Custom music player",
-                    "Video background support",
-                    "Instagram feed integration",
-                    "Multi-language support"
-                ]
+                features: ["Gradient animations", "Smooth scroll", "Music player", "Video background", "Instagram feed", "Multi-language"],
+                badge: "New"
             },
             {
                 id: 4,
@@ -876,14 +1345,8 @@
                 price: CONFIG.prices['Template Romantis Hearts'],
                 image: "https://images.unsplash.com/photo-1518199266791-5375a8309063?w=500&h=500&fit=crop",
                 description: "Desain romantis dengan elemen hearts dan soft colors. Menampilkan cinta Anda dengan cara yang paling manis.",
-                features: [
-                    "Heart animations",
-                    "Soft color palette",
-                    "Love story section",
-                    "Photo carousel",
-                    "Gift list feature",
-                    "Email notification"
-                ]
+                features: ["Heart animations", "Soft palette", "Love story", "Photo carousel", "Gift list", "Email notification"],
+                badge: null
             },
             {
                 id: 5,
@@ -892,14 +1355,8 @@
                 price: CONFIG.prices['Template Elegant Gold'],
                 image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=500&h=500&fit=crop",
                 description: "Premium template dengan sentuhan gold dan desain luxurious. Untuk pernikahan yang mewah dan eksklusif.",
-                features: [
-                    "Gold accent design",
-                    "Luxury animations",
-                    "VIP invite feature",
-                    "Parking map",
-                    "Hotel recommendations",
-                    "Live chat support"
-                ]
+                features: ["Gold accent", "Luxury animations", "VIP feature", "Parking map", "Hotel recommendations", "Live chat"],
+                badge: "Luxury"
             },
             {
                 id: 6,
@@ -908,18 +1365,12 @@
                 price: CONFIG.prices['Template Nature Boho'],
                 image: "https://images.unsplash.com/photo-1469334034224-c8f07588f66d?w=500&h=500&fit=crop",
                 description: "Theme bohemian dengan elemen nature yang warm dan inviting. Perfect untuk pernikahan outdoor atau rustic.",
-                features: [
-                    "Boho design elements",
-                    "Nature illustrations",
-                    "Warm color scheme",
-                    "Rustic animations",
-                    "Outdoor map",
-                    "Playlist feature"
-                ]
+                features: ["Boho elements", "Nature illustrations", "Warm scheme", "Rustic animations", "Outdoor map", "Playlist"],
+                badge: null
             }
         ];
 
-        // State Variables
+        // State
         let currentFilter = 'all';
         let searchQuery = '';
         let selectedProduct = null;
@@ -933,45 +1384,49 @@
         const modalClose = document.getElementById('modalClose');
         const orderForm = document.getElementById('orderForm');
         const formSuccess = document.getElementById('formSuccess');
+        const header = document.querySelector('.header');
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
 
         // Render Products
         function renderProducts() {
-            const filteredProducts = products.filter(product => {
-                const matchesFilter = currentFilter === 'all' || product.category === currentFilter;
-                const matchesSearch = product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                                  product.description.toLowerCase().includes(searchQuery.toLowerCase());
-                return matchesFilter && matchesSearch;
+            const filtered = products.filter(p => {
+                const matchFilter = currentFilter === 'all' || p.category === currentFilter;
+                const matchSearch = p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                                  p.description.toLowerCase().includes(searchQuery.toLowerCase());
+                return matchFilter && matchSearch;
             });
 
-            productGrid.innerHTML = filteredProducts.map(product => `
-                <div class="product-card fade-in" data-id="${product.id}">
+            productGrid.innerHTML = filtered.map(p => `
+                <div class="product-card scroll-reveal" data-id="${p.id}">
+                    ${p.badge ? `<div class="product-badge">${p.badge}</div>` : ''}
                     <div class="product-image">
-                        <img src="${product.image}" alt="${product.title}">
+                        <img src="${p.image}" alt="${p.title}">
                     </div>
                     <div class="product-info">
-                        <div class="product-category">${product.category}</div>
-                        <h3 class="product-title">${product.title}</h3>
-                        <div class="product-price">${product.price}</div>
+                        <span class="product-category">${p.category}</span>
+                        <h3 class="product-title">${p.title}</h3>
+                        <div class="product-price">${p.price}</div>
                         <div class="product-features">
-                            <div class="feature">
-                                <i class="fas fa-mobile-alt"></i> Responsive
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-moon"></i> Dark Mode
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-palette"></i> Customizable
-                            </div>
+                            <div class="feature"><i class="fas fa-mobile-alt"></i> Responsive</div>
+                            <div class="feature"><i class="fas fa-moon"></i> Dark Mode</div>
+                            <div class="feature"><i class="fas fa-palette"></i> Customizable</div>
                         </div>
                     </div>
                 </div>
             `).join('');
-            
-            // Re-init scroll animations for new elements
+
             initScrollAnimations();
         }
 
-        // Filter Products
+        // Filters & Search
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 filterBtns.forEach(b => b.classList.remove('active'));
@@ -981,153 +1436,100 @@
             });
         });
 
-        // Search Function
-        searchInput.addEventListener('input', (e) => {
+        searchInput.addEventListener('input', e => {
             searchQuery = e.target.value;
             renderProducts();
         });
 
-        // Dark Mode Toggle
+        // Dark Mode
         darkModeToggle.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
-            const isDarkMode = document.body.classList.contains('dark-mode');
-            darkModeToggle.innerHTML = isDarkMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-            
-            // Save preference to localStorage
-            localStorage.setItem('darkMode', isDarkMode);
+            const isDark = document.body.classList.contains('dark-mode');
+            darkModeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            localStorage.setItem('darkMode', isDark);
         });
 
-        // Load dark mode preference
-        const savedDarkMode = localStorage.getItem('darkMode');
-        if (savedDarkMode === 'true') {
+        if (localStorage.getItem('darkMode') === 'true') {
             document.body.classList.add('dark-mode');
             darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
         }
 
         // Scroll Animations
         function initScrollAnimations() {
-            const elements = document.querySelectorAll('.fade-in, .slide-up');
-            
+            const elements = document.querySelectorAll('.scroll-reveal');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
+                        entry.target.classList.add('revealed');
                     }
                 });
-            }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-            elements.forEach(element => {
-                observer.observe(element);
-            });
+            elements.forEach(el => observer.observe(el));
         }
 
-        // Modal Functions
-        function openModal(productId) {
-            const product = products.find(p => p.id === productId);
-            selectedProduct = product;
+        // Modal
+        function openModal(id) {
+            const p = products.find(x => x.id === id);
+            selectedProduct = p;
             
-            document.getElementById('modalImage').src = product.image;
-            document.getElementById('modalImage').alt = product.title;
-            document.getElementById('modalTitle').textContent = product.title;
-            document.getElementById('modalCategory').textContent = product.category;
-            document.getElementById('modalPrice').textContent = product.price;
-            document.getElementById('modalDescription').textContent = product.description;
-            
-            document.getElementById('modalFeatures').innerHTML = product.features.map(feature => `
-                <li><i class="fas fa-check-circle"></i> ${feature}</li>
-            `).join('');
+            document.getElementById('modalImage').src = p.image;
+            document.getElementById('modalTitle').textContent = p.title;
+            document.getElementById('modalCategory').textContent = p.category;
+            document.getElementById('modalPrice').textContent = p.price;
+            document.getElementById('modalDescription').textContent = p.description;
+            document.getElementById('modalFeatures').innerHTML = p.features.map(f => `<li><i class="fas fa-check-circle"></i> ${f}</li>`).join('');
             
             productModal.style.display = 'flex';
         }
 
-        productGrid.addEventListener('click', (e) => {
-            const productCard = e.target.closest('.product-card');
-            if (productCard) {
-                const productId = parseInt(productCard.dataset.id);
-                openModal(productId);
-            }
+        productGrid.addEventListener('click', e => {
+            const card = e.target.closest('.product-card');
+            if (card) openModal(parseInt(card.dataset.id));
         });
 
-        modalClose.addEventListener('click', () => {
-            productModal.style.display = 'none';
+        modalClose.addEventListener('click', () => productModal.style.display = 'none');
+        productModal.addEventListener('click', e => {
+            if (e.target === productModal) productModal.style.display = 'none';
         });
 
-        productModal.addEventListener('click', (e) => {
-            if (e.target === productModal) {
-                productModal.style.display = 'none';
-            }
-        });
-
-        // WhatsApp Purchase Button
+        // WhatsApp & Email
         document.getElementById('btnPurchase').addEventListener('click', () => {
             if (!selectedProduct) return;
-            
-            const message = `Halo, saya ingin membeli template undangan digital:\n\n` +
-                          `📦 Template: ${selectedProduct.title}\n` +
-                          `💰 Harga: ${selectedProduct.price}\n\n` +
-                          `Bisa informasi lebih lanjut?`;
-            window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
+            const msg = `Halo, ingin beli template:\n\n📦 ${selectedProduct.title}\n💰 ${selectedProduct.price}\n\nBisa info lebih lanjut?`;
+            window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank');
         });
 
-        // Email Order Button
         document.getElementById('btnEmailOrder').addEventListener('click', () => {
             if (!selectedProduct) return;
-            
-            // Auto-fill form with selected product
             document.getElementById('template').value = selectedProduct.title;
-            
-            // Close modal and scroll to form
             productModal.style.display = 'none';
-            document.querySelector('.order-section').scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'center'
-            });
+            document.querySelector('.order-section').scrollIntoView({ behavior: 'smooth' });
         });
 
-        // Order Form Submission
-        orderForm.addEventListener('submit', (e) => {
+        // Form Submit
+        orderForm.addEventListener('submit', e => {
             e.preventDefault();
-            
-            const formData = {
+            const fd = {
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
                 phone: document.getElementById('phone').value,
                 template: document.getElementById('template').value,
                 weddingDate: document.getElementById('weddingDate').value,
-                namaPengantin1: document.getElementById('namaPengantin1').value,
-                namaPengantin2: document.getElementById('namaPengantin2').value,
-                message: document.getElementById('message').value
+                p1: document.getElementById('namaPengantin1').value,
+                p2: document.getElementById('namaPengantin2').value,
+                msg: document.getElementById('message').value
             };
-
-            // Send to WhatsApp with form data
-            const message = `🎉 ORDER UNDANGAN DIGITAL 🎉\n\n` +
-                          `👤 Nama: ${formData.name}\n` +
-                          `📧 Email: ${formData.email}\n` +
-                          `📱 WA: ${formData.phone}\n\n` +
-                          `📦 Template: ${formData.template}\n` +
-                          `📅 Tanggal Pernikahan: ${formData.weddingDate}\n\n` +
-                          `💕 Nama Pengantin:\n` +
-                          `   - ${formData.namaPengantin1}\n` +
-                          `   - ${formData.namaPengantin2}\n\n` +
-                          `💬 Pesan: ${formData.message || 'Tidak ada'}\n\n` +
-                          `Terima kasih!`;
-
-            window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
-
-            // Show success message
+            
+            const msg = `🎉 ORDER UNDANGAN DIGITAL 🎉\n\n👤 ${fd.name}\n📧 ${fd.email}\n📱 ${fd.phone}\n\n📦 ${fd.template}\n📅 ${fd.weddingDate}\n\n💕 ${fd.p1} & ${fd.p2}\n\n💬 ${fd.msg || '-'}`;
+            window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+            
             formSuccess.classList.add('show');
             orderForm.reset();
-
-            // Hide success message after 5 seconds
-            setTimeout(() => {
-                formSuccess.classList.remove('show');
-            }, 5000);
+            setTimeout(() => formSuccess.classList.remove('show'), 5000);
         });
 
-        // Initialize
+        // Init
         renderProducts();
         initScrollAnimations();
     </script>
