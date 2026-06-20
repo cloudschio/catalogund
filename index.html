@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Katalog Unfanga Digital</title>
-  <meta name="description" content="Katalog penjualan produk digital dengan tema soft blue floral." />
+  <title>Unfanga Digital - Katalog</title>
+  <meta name="description" content="Katalog produk digital dengan tema soft blue floral, form order WhatsApp, pembayaran QRIS, dan dark mode." />
   <style>
     :root{
       --bg: #f7fbff;
       --bg-2: #eef6ff;
-      --card: rgba(255,255,255,.78);
+      --card: rgba(255,255,255,.80);
       --card-border: rgba(118, 170, 214, .18);
       --text: #24415d;
       --muted: #5f7690;
@@ -22,15 +22,17 @@
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body{
-      margin:0;
+      margin: 0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color: var(--text);
       background:
         radial-gradient(circle at top left, rgba(182, 216, 241, .55), transparent 28%),
         radial-gradient(circle at top right, rgba(221, 237, 248, .75), transparent 24%),
-        linear-gradient(180deg, #f9fcff 0%, #eef6ff 100%);
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
       min-height: 100vh;
+      transition: background .3s ease, color .3s ease;
     }
 
     body::before{
@@ -47,6 +49,19 @@
       opacity: .55;
     }
 
+    body.dark{
+      --bg: #0f1720;
+      --bg-2: #162131;
+      --card: rgba(21, 30, 42, .84);
+      --card-border: rgba(148, 188, 224, .14);
+      --text: #e7f0f8;
+      --muted: #a9bed0;
+      --primary: #7fb3d5;
+      --primary-2: #5f8fb8;
+      --accent: #203246;
+      --shadow: 0 18px 50px rgba(0, 0, 0, .28);
+    }
+
     .container{
       width: min(1180px, calc(100% - 32px));
       margin: 0 auto;
@@ -55,7 +70,7 @@
     }
 
     header{
-      padding: 22px 0 10px;
+      padding: 18px 0 10px;
       position: sticky;
       top: 0;
       z-index: 50;
@@ -64,11 +79,22 @@
       border-bottom: 1px solid rgba(127,179,213,.12);
     }
 
+    body.dark header{
+      background: linear-gradient(180deg, rgba(15,23,32,.92), rgba(15,23,32,.72));
+    }
+
     .nav{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:16px;
+      flex-wrap: wrap;
+    }
+
+    .nav-right{
+      display:flex;
+      align-items:center;
+      gap:12px;
     }
 
     .brand{
@@ -90,6 +116,8 @@
       background: linear-gradient(135deg, var(--primary), var(--primary-2));
       color:white;
       box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
     }
     .brand-badge::after{
       content:"✿";
@@ -119,6 +147,51 @@
       color: var(--text);
     }
 
+    .theme-switch{
+      position: relative;
+      display: inline-block;
+      width: 56px;
+      height: 32px;
+      flex: 0 0 auto;
+    }
+
+    .theme-switch input{
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider{
+      position: absolute;
+      cursor: pointer;
+      inset: 0;
+      background: #cfe3f2;
+      border-radius: 999px;
+      transition: .25s ease;
+      box-shadow: inset 0 0 0 1px rgba(127,179,213,.16);
+    }
+
+    .slider::before{
+      content: "";
+      position: absolute;
+      height: 26px;
+      width: 26px;
+      left: 3px;
+      top: 3px;
+      background: white;
+      border-radius: 50%;
+      transition: .25s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,.12);
+    }
+
+    .theme-switch input:checked + .slider{
+      background: linear-gradient(135deg, #5f8fb8, #2f587a);
+    }
+
+    .theme-switch input:checked + .slider::before{
+      transform: translateX(24px);
+    }
+
     .hero{
       padding: 54px 0 28px;
     }
@@ -130,6 +203,10 @@
       box-shadow: var(--shadow);
       overflow:hidden;
       position: relative;
+    }
+
+    body.dark .hero-card{
+      background: linear-gradient(180deg, rgba(21,30,42,.88), rgba(15,23,32,.78));
     }
 
     .hero-inner{
@@ -221,6 +298,10 @@
       color: var(--text);
       border: 1px solid rgba(127,179,213,.20);
     }
+    body.dark .btn-ghost{
+      background: rgba(21,30,42,.72);
+    }
+
     .btn-ghost:hover{ background: rgba(127,179,213,.08); }
 
     .hero-aside{
@@ -230,6 +311,10 @@
       padding: 22px;
     }
 
+    body.dark .hero-aside{
+      background: linear-gradient(180deg, rgba(21,30,42,.78), rgba(15,23,32,.84));
+    }
+
     .hero-aside-box{
       border-radius: 22px;
       padding: 22px;
@@ -237,6 +322,12 @@
         radial-gradient(circle at top right, rgba(169,207,232,.45), transparent 40%),
         linear-gradient(180deg, rgba(255,255,255,.82), rgba(247,251,255,.88));
       border: 1px solid rgba(127,179,213,.16);
+    }
+
+    body.dark .hero-aside-box{
+      background:
+        radial-gradient(circle at top right, rgba(95,143,184,.25), transparent 40%),
+        linear-gradient(180deg, rgba(21,30,42,.86), rgba(15,23,32,.90));
     }
 
     .stats{
@@ -251,6 +342,10 @@
       border-radius: 18px;
       background: rgba(255,255,255,.78);
       border: 1px solid rgba(127,179,213,.15);
+    }
+
+    body.dark .stat{
+      background: rgba(15,23,32,.72);
     }
 
     .stat strong{
@@ -295,9 +390,7 @@
       transition: .28s ease;
     }
 
-    .card:hover{
-      transform: translateY(-4px);
-    }
+    .card:hover{ transform: translateY(-4px); }
 
     .card-img{
       height: 180px;
@@ -312,6 +405,14 @@
       padding: 16px;
     }
 
+    body.dark .card-img{
+      background:
+        linear-gradient(135deg, rgba(95,143,184,.30), rgba(255,255,255,.08)),
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,.2), transparent 18%),
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,.15), transparent 16%),
+        linear-gradient(180deg, #162131 0%, #1d2a3b 100%);
+    }
+
     .flower{
       position:absolute;
       inset:auto 14px 14px auto;
@@ -321,9 +422,7 @@
       user-select:none;
     }
 
-    .card-body{
-      padding: 18px;
-    }
+    .card-body{ padding: 18px; }
 
     .card h3{
       font-size: 1.18rem;
@@ -382,12 +481,13 @@
       gap: 14px;
     }
 
-    .feature, .payment-box, .form-box{
+    .feature, .payment-card, .form-box{
       padding: 18px;
       border-radius: 22px;
-      background: rgba(255,255,255,.76);
-      border: 1px solid rgba(127,179,213,.16);
+      background: var(--card);
+      border: 1px solid var(--card-border);
       box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
     }
 
     .feature strong{
@@ -396,13 +496,13 @@
       font-size: 1.02rem;
     }
 
-    .feature span, .payment-box p{
+    .feature span, .payment-card p{
       color: var(--muted);
       line-height:1.6;
       font-size: .94rem;
     }
 
-    .order-wrap{
+    .order-wrap, .payment-grid{
       display:grid;
       grid-template-columns: 1fr 1fr;
       gap: 18px;
@@ -431,25 +531,16 @@
       outline: none;
     }
 
+    body.dark input, body.dark textarea, body.dark select{
+      background: rgba(15,23,32,.88);
+      color: var(--text);
+    }
+
     textarea{ min-height: 120px; resize: vertical; }
 
     input:focus, textarea:focus, select:focus{
       border-color: rgba(127,179,213,.6);
       box-shadow: 0 0 0 4px rgba(127,179,213,.12);
-    }
-
-    .payment-grid{
-      display:grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-
-    .payment-card{
-      padding: 18px;
-      border-radius: 22px;
-      background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(235,245,252,.88));
-      border: 1px solid rgba(127,179,213,.16);
-      box-shadow: var(--shadow);
     }
 
     .qris-box{
@@ -465,6 +556,12 @@
       color: #5b7d99;
       text-align:center;
       padding: 18px;
+    }
+
+    body.dark .qris-box{
+      background:
+        radial-gradient(circle at 20% 20%, rgba(127,179,213,.12), transparent 22%),
+        rgba(15,23,32,.85);
     }
 
     .qris-mark{
@@ -517,7 +614,6 @@
 
     @media (max-width: 640px){
       .container{ width: min(100% - 20px, 1180px); }
-      header{ padding-top: 16px; }
       nav ul{ gap: 8px; }
       nav a{ padding: 8px 11px; font-size: .92rem; }
       .hero{ padding-top: 30px; }
@@ -536,13 +632,21 @@
           <span class="brand-badge"></span>
           <span>Unfanga Digital</span>
         </a>
-        <nav>
-          <ul>
-            <li><a href="#produk">Produk</a></li>
-            <li><a href="#order">Order</a></li>
-            <li><a href="#pembayaran">Pembayaran</a></li>
-          </ul>
-        </nav>
+
+        <div class="nav-right">
+          <nav>
+            <ul>
+              <li><a href="#produk">Produk</a></li>
+              <li><a href="#order">Order</a></li>
+              <li><a href="#pembayaran">Pembayaran</a></li>
+            </ul>
+          </nav>
+
+          <label class="theme-switch" title="Toggle dark mode">
+            <input type="checkbox" id="themeToggle">
+            <span class="slider"></span>
+          </label>
+        </div>
       </div>
     </div>
   </header>
@@ -577,11 +681,11 @@
                 <div class="stats">
                   <div class="stat">
                     <strong>1 File</strong>
-                    <span>Langsung pakai</span>
+                    <span class="desc">Langsung pakai</span>
                   </div>
                   <div class="stat">
                     <strong>Responsive</strong>
-                    <span>Mobile friendly</span>
+                    <span class="desc">Mobile friendly</span>
                   </div>
                 </div>
               </div>
@@ -596,7 +700,7 @@
         <div class="section-title">
           <div>
             <h2>Daftar Produk</h2>
-            <p>Setiap kartu produk sekarang punya tombol demo / live preview yang bisa kamu arahkan ke link produk atau halaman demo.</p>
+            <p>Setiap kartu produk sudah memiliki tombol demo / live preview dan tombol beli.</p>
           </div>
         </div>
 
@@ -611,7 +715,7 @@
                 <span class="tag">Siap edit</span>
               </div>
               <div class="product-actions">
-                <a class="btn btn-ghost btn-sm" href="https://example.com" target="_blank">Demo / Live Preview</a>
+                <a class="btn btn-ghost btn-sm" href="https://example.com" target="_blank" rel="noopener">Demo / Live Preview</a>
                 <a class="btn btn-primary btn-sm" href="#order">Beli</a>
               </div>
             </div>
@@ -627,7 +731,7 @@
                 <span class="tag">Instant download</span>
               </div>
               <div class="product-actions">
-                <a class="btn btn-ghost btn-sm" href="https://example.com" target="_blank">Demo / Live Preview</a>
+                <a class="btn btn-ghost btn-sm" href="https://example.com" target="_blank" rel="noopener">Demo / Live Preview</a>
                 <a class="btn btn-primary btn-sm" href="#order">Beli</a>
               </div>
             </div>
@@ -643,7 +747,7 @@
                 <span class="tag">Responsive</span>
               </div>
               <div class="product-actions">
-                <a class="btn btn-ghost btn-sm" href="https://example.com" target="_blank">Demo / Live Preview</a>
+                <a class="btn btn-ghost btn-sm" href="https://example.com" target="_blank" rel="noopener">Demo / Live Preview</a>
                 <a class="btn btn-primary btn-sm" href="#order">Beli</a>
               </div>
             </div>
@@ -657,7 +761,7 @@
         <div class="section-title">
           <div>
             <h2>Formulir Pemesanan WhatsApp</h2>
-            <p>Form ini akan menyusun pesan otomatis lalu membuka WhatsApp pembeli dengan isi order yang sudah rapi.</p>
+            <p>Isi data pernikahan, lalu klik kirim untuk membuka WhatsApp dengan pesan otomatis.</p>
           </div>
         </div>
 
@@ -665,42 +769,63 @@
           <div class="form-box">
             <form id="orderForm">
               <div class="form-group">
-                <label for="nama">Nama</label>
-                <input id="nama" name="nama" type="text" placeholder="Nama lengkap" required />
+                <label for="mempelaiLaki">Nama Mempelai Laki-Laki</label>
+                <input id="mempelaiLaki" type="text" placeholder="Nama mempelai laki-laki" required>
               </div>
+
               <div class="form-group">
-                <label for="wa">Nomor WhatsApp</label>
-                <input id="wa" name="wa" type="tel" placeholder="08xxxxxxxxxx" required />
+                <label for="mempelaiPerempuan">Nama Mempelai Perempuan</label>
+                <input id="mempelaiPerempuan" type="text" placeholder="Nama mempelai perempuan" required>
               </div>
+
               <div class="form-group">
-                <label for="produkPilihan">Produk</label>
-                <select id="produkPilihan" name="produkPilihan" required>
-                  <option value="">Pilih produk</option>
-                  <option>Template Instagram</option>
-                  <option>Preset Soft Blue</option>
-                  <option>Katalog Digital</option>
-                  <option>E-book Design</option>
-                  <option>Website Undangan</option>
-                  <option>Jasa Edit Konten</option>
-                </select>
+                <label for="ortuLaki">Nama Orangtua Laki-Laki</label>
+                <input id="ortuLaki" type="text" placeholder="Nama orangtua laki-laki" required>
               </div>
+
+              <div class="form-group">
+                <label for="ortuPerempuan">Nama Orangtua Perempuan</label>
+                <input id="ortuPerempuan" type="text" placeholder="Nama orangtua perempuan" required>
+              </div>
+
+              <div class="form-group">
+                <label for="akad">Tanggal Akad</label>
+                <input id="akad" type="date" required>
+              </div>
+
+              <div class="form-group">
+                <label for="resepsi">Tanggal Resepsi</label>
+                <input id="resepsi" type="date" required>
+              </div>
+
+              <div class="form-group">
+                <label for="lokasiAkad">Lokasi Akad</label>
+                <input id="lokasiAkad" type="text" placeholder="Lokasi akad" required>
+              </div>
+
+              <div class="form-group">
+                <label for="lokasiResepsi">Lokasi Resepsi</label>
+                <input id="lokasiResepsi" type="text" placeholder="Lokasi resepsi" required>
+              </div>
+
               <div class="form-group">
                 <label for="catatan">Catatan</label>
-                <textarea id="catatan" name="catatan" placeholder="Contoh: minta warna lebih soft, kirim file via WA, dll."></textarea>
+                <textarea id="catatan" placeholder="Tambahkan catatan tambahan..."></textarea>
               </div>
+
               <button type="submit" class="btn btn-primary">Kirim Pesanan via WhatsApp</button>
             </form>
           </div>
 
-          <div class="payment-box">
+          <div class="feature">
             <h3>Cara Order</h3>
             <p style="margin-top:10px;">
-              Isi formulir, lalu klik kirim. Pesan akan otomatis terbuka di WhatsApp dengan format order yang siap dikirim.
+              Isi formulir sesuai data acara, lalu klik kirim. Pesan akan otomatis terbuka di WhatsApp.
             </p>
             <div class="rekening-list">
-              <div class="rekening-item">1. Pilih produk yang kamu inginkan.</div>
-              <div class="rekening-item">2. Isi nama, nomor WhatsApp, dan catatan.</div>
-              <div class="rekening-item">3. Klik tombol kirim untuk lanjut ke chat WhatsApp.</div>
+              <div class="rekening-item">1. Lengkapi data mempelai dan acara.</div>
+              <div class="rekening-item">2. Tambahkan catatan jika ada permintaan khusus.</div>
+              <div class="rekening-item">3. Kirim lewat WhatsApp untuk konfirmasi.</div>
             </div>
           </div>
         </div>
@@ -749,25 +874,53 @@
   </footer>
 
   <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark');
+      themeToggle.checked = true;
+    }
+
+    themeToggle.addEventListener('change', function () {
+      if (this.checked) {
+        document.body.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.body.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      }
+    });
+
     const orderForm = document.getElementById('orderForm');
 
     orderForm.addEventListener('submit', function(e) {
       e.preventDefault();
 
-      const nama = document.getElementById('nama').value.trim();
-      const wa = document.getElementById('wa').value.trim();
-      const produk = document.getElementById('produkPilihan').value;
+      const mempelaiLaki = document.getElementById('mempelaiLaki').value.trim();
+      const mempelaiPerempuan = document.getElementById('mempelaiPerempuan').value.trim();
+      const ortuLaki = document.getElementById('ortuLaki').value.trim();
+      const ortuPerempuan = document.getElementById('ortuPerempuan').value.trim();
+      const akad = document.getElementById('akad').value;
+      const resepsi = document.getElementById('resepsi').value;
+      const lokasiAkad = document.getElementById('lokasiAkad').value.trim();
+      const lokasiResepsi = document.getElementById('lokasiResepsi').value.trim();
       const catatan = document.getElementById('catatan').value.trim();
 
       const adminNumber = '6281234567890';
-      const pesan = `Halo admin Unfanga Digital, saya ingin order:
+      const pesan = `Halo admin, saya ingin memesan undangan digital dengan data berikut:
 
-Nama: ${nama}
-Nomor WhatsApp: ${wa}
-Produk: ${produk}
-Catatan: ${catatan || '-'} 
+Nama Mempelai Laki-Laki: ${mempelaiLaki}
+Nama Mempelai Perempuan: ${mempelaiPerempuan}
+Nama Orangtua Laki-Laki: ${ortuLaki}
+Nama Orangtua Perempuan: ${ortuPerempuan}
+Tanggal Akad: ${akad}
+Tanggal Resepsi: ${resepsi}
+Lokasi Akad: ${lokasiAkad}
+Lokasi Resepsi: ${lokasiResepsi}
+Catatan: ${catatan || '-'}
 
-Mohon info detail dan total pembayarannya.`;
+Mohon info detail selanjutnya.`;
 
       const url = `https://wa.me/${adminNumber}?text=${encodeURIComponent(pesan)}`;
       window.open(url, '_blank');
