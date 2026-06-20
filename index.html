@@ -7,18 +7,18 @@
   <meta name="description" content="Cloudsinvite - Solusi undangan cantik, auto dilirik. Katalog produk digital dengan tema soft blue floral, form order WhatsApp, pembayaran QRIS, dark mode, dan konsultasi chat." />
   <style>
     :root{
-      color-scheme: light dark;
-      --bg: #f8fcff;
-      --bg-2: #edf5fb;
-      --card: #ffffff;
-      --card-2: #f4f9fd;
-      --card-border: rgba(67, 110, 150, .28);
-      --section-border: rgba(67, 110, 150, .72);
-      --text: #17324d;
-      --muted: #4f6780;
-      --primary: #6ea9d3;
-      --primary-2: #95c2e4;
-      --shadow: 0 14px 38px rgba(72, 110, 145, .16);
+      color-scheme: dark light;
+      --bg: #0d1520;
+      --bg-2: #152131;
+      --card: #182231;
+      --card-2: #101826;
+      --card-border: rgba(141, 182, 217, .24);
+      --section-border: rgba(123, 172, 212, .58);
+      --text: #eff6fc;
+      --muted: #b6c8d8;
+      --primary: #7fb3d5;
+      --primary-2: #5f8fb8;
+      --shadow: 0 16px 40px rgba(0, 0, 0, .30);
       --radius: 24px;
     }
 
@@ -30,12 +30,12 @@
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(181, 214, 238, .38), transparent 28%),
-        radial-gradient(circle at top right, rgba(220, 236, 248, .50), transparent 24%),
+        radial-gradient(circle at top left, rgba(95, 143, 184, .22), transparent 28%),
+        radial-gradient(circle at top right, rgba(127, 179, 213, .14), transparent 24%),
         linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
       min-height: 100vh;
       transition: background .3s ease, color .3s ease;
-      animation: pageFade .7s ease both;
+      animation: pageFade .55s ease both;
     }
 
     body::before{
@@ -44,35 +44,29 @@
       inset: 0;
       pointer-events: none;
       background-image:
-        radial-gradient(circle at 20% 20%, rgba(127,179,213,.12) 0 2px, transparent 2px),
-        radial-gradient(circle at 80% 15%, rgba(127,179,213,.10) 0 2px, transparent 2px),
-        radial-gradient(circle at 15% 80%, rgba(127,179,213,.10) 0 2px, transparent 2px),
-        radial-gradient(circle at 85% 75%, rgba(127,179,213,.08) 0 2px, transparent 2px);
+        radial-gradient(circle at 20% 20%, rgba(127,179,213,.10) 0 2px, transparent 2px),
+        radial-gradient(circle at 80% 15%, rgba(127,179,213,.08) 0 2px, transparent 2px),
+        radial-gradient(circle at 15% 80%, rgba(127,179,213,.08) 0 2px, transparent 2px),
+        radial-gradient(circle at 85% 75%, rgba(127,179,213,.07) 0 2px, transparent 2px);
       background-size: 180px 180px;
-      opacity: .55;
-    }
-
-    body.dark{
-      --bg: #0d1520;
-      --bg-2: #152131;
-      --card: #182231;
-      --card-2: #101826;
-      --card-border: rgba(141, 182, 217, .28);
-      --section-border: rgba(123, 172, 212, .58);
-      --text: #eff6fc;
-      --muted: #b6c8d8;
-      --primary: #7fb3d5;
-      --primary-2: #5f8fb8;
-      --shadow: 0 16px 40px rgba(0, 0, 0, .30);
+      opacity: .5;
+      animation: bgFloat 16s ease-in-out infinite alternate;
+      will-change: transform, opacity;
     }
 
     @keyframes pageFade{
-      from{ opacity:0; transform: translateY(10px); }
+      from{ opacity:0; transform: translateY(8px); }
       to{ opacity:1; transform: translateY(0); }
     }
 
+    @keyframes bgFloat{
+      0%{ transform: translate3d(0, 0, 0) scale(1); opacity: .40; }
+      50%{ transform: translate3d(12px, -10px, 0) scale(1.02); opacity: .56; }
+      100%{ transform: translate3d(-10px, 12px, 0) scale(1.01); opacity: .46; }
+    }
+
     @keyframes floatIn{
-      from{ opacity:0; transform: translateY(24px); }
+      from{ opacity:0; transform: translateY(18px); }
       to{ opacity:1; transform: translateY(0); }
     }
 
@@ -89,12 +83,8 @@
       top: 0;
       z-index: 50;
       backdrop-filter: blur(12px);
-      background: linear-gradient(180deg, rgba(248,252,255,.92), rgba(248,252,255,.72));
-      border-bottom: 1px solid rgba(127,179,213,.12);
-    }
-
-    body.dark header{
       background: linear-gradient(180deg, rgba(13,21,32,.92), rgba(13,21,32,.72));
+      border-bottom: 1px solid rgba(127,179,213,.12);
     }
 
     .nav{
@@ -179,7 +169,7 @@
       position: absolute;
       cursor: pointer;
       inset: 0;
-      background: #cfe3f2;
+      background: #28415b;
       border-radius: 999px;
       transition: .25s ease;
       box-shadow: inset 0 0 0 1px rgba(127,179,213,.16);
@@ -211,7 +201,7 @@
     }
 
     .hero{
-      padding-top: 38px;
+      padding-top: 34px;
     }
 
     .hero-card,
@@ -222,7 +212,8 @@
       box-shadow: var(--shadow);
       overflow:hidden;
       position: relative;
-      animation: floatIn .8s ease both;
+      animation: floatIn .7s ease both;
+      will-change: transform, opacity;
     }
 
     .hero-inner{
@@ -230,7 +221,7 @@
       grid-template-columns: 1.3fr .9fr;
       gap: 28px;
       align-items:center;
-      padding: 34px;
+      padding: 32px;
     }
 
     .floral{
@@ -240,13 +231,19 @@
       height: 220px;
       border-radius: 50%;
       background:
-        radial-gradient(circle at 35% 35%, rgba(127,179,213,.26) 0 16%, transparent 17%),
-        radial-gradient(circle at 65% 35%, rgba(169,207,232,.30) 0 14%, transparent 15%),
-        radial-gradient(circle at 50% 62%, rgba(127,179,213,.18) 0 22%, transparent 23%);
-      filter: blur(1px);
+        radial-gradient(circle at 35% 35%, rgba(127,179,213,.18) 0 16%, transparent 17%),
+        radial-gradient(circle at 65% 35%, rgba(169,207,232,.22) 0 14%, transparent 15%),
+        radial-gradient(circle at 50% 62%, rgba(127,179,213,.14) 0 22%, transparent 23%);
       opacity: .9;
       transform: rotate(12deg);
+      animation: floralMove 12s ease-in-out infinite alternate;
+      will-change: transform;
       pointer-events:none;
+    }
+
+    @keyframes floralMove{
+      from{ transform: translate(0, 0) rotate(12deg); }
+      to{ transform: translate(-14px, -10px) rotate(16deg); }
     }
 
     .kicker{
@@ -255,10 +252,10 @@
       gap:8px;
       padding: 8px 14px;
       border-radius: 999px;
-      background: rgba(127,179,213,.11);
-      color: #477699;
+      background: rgba(127,179,213,.10);
+      color: #9fc4e0;
       font-weight: 700;
-      font-size: .92rem;
+      font-size: .9rem;
       margin-bottom: 16px;
     }
 
@@ -268,13 +265,13 @@
     }
 
     h1{
-      font-size: clamp(2.6rem, 6vw, 5.2rem);
-      line-height: 1.02;
-      letter-spacing: -.05em;
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      line-height: 1.08;
+      letter-spacing: -.03em;
       margin-bottom: 16px;
       font-weight: 900;
       text-transform: uppercase;
-      max-width: 12ch;
+      max-width: 16ch;
     }
 
     .hero p,
@@ -289,7 +286,7 @@
 
     .hero p{
       margin: 0 0 22px;
-      font-size: 1.04rem;
+      font-size: 1.03rem;
       max-width: 58ch;
     }
 
@@ -310,31 +307,32 @@
       padding: 13px 18px;
       border-radius: 16px;
       font-weight: 700;
-      transition: .25s ease;
+      transition: transform .22s ease, background .22s ease, box-shadow .22s ease;
       cursor:pointer;
+      will-change: transform;
     }
 
     .btn-primary{
       background: linear-gradient(135deg, var(--primary), #8bc0df);
       color:white;
-      box-shadow: 0 14px 30px rgba(127,179,213,.30);
+      box-shadow: 0 14px 30px rgba(127,179,213,.22);
     }
     .btn-primary:hover{ transform: translateY(-2px); }
 
     .btn-ghost{
       background: var(--card-2);
       color: var(--text);
-      border: 1px solid rgba(127,179,213,.26);
+      border: 1px solid rgba(127,179,213,.22);
     }
-    .btn-ghost:hover{ background: rgba(127,179,213,.08); }
+    .btn-ghost:hover{ transform: translateY(-2px); background: rgba(127,179,213,.08); }
 
     .hero-aside{
       background: var(--card-2);
       border: 1px solid rgba(127,179,213,.18);
       border-radius: 28px;
       padding: 22px;
-      animation: floatIn .8s ease both;
-      animation-delay: .06s;
+      animation: floatIn .7s ease both;
+      animation-delay: .05s;
     }
 
     .hero-aside-box{
@@ -360,14 +358,13 @@
 
     .stat strong{
       display:block;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       margin-bottom: 6px;
-      color: #365e7e;
+      color: #bcd9ee;
     }
 
     .section-box{
       padding: 22px;
-      animation: floatIn .8s ease both;
     }
 
     .section-title{
@@ -390,34 +387,29 @@
       box-shadow: var(--shadow);
       border-radius: var(--radius);
       overflow:hidden;
-      transition: .28s ease;
-      animation: floatIn .8s ease both;
+      transition: transform .22s ease, box-shadow .22s ease;
+      animation: floatIn .7s ease both;
+      will-change: transform;
     }
 
-    .card:hover{ transform: translateY(-5px); }
+    .card:hover{ transform: translateY(-4px); }
 
     .card-img{
       height: 180px;
       background:
-        linear-gradient(135deg, rgba(110,169,211,.38), rgba(255,255,255,.22)),
-        linear-gradient(180deg, #dff0fb 0%, #c4def0 100%);
+        linear-gradient(135deg, rgba(110,169,211,.26), rgba(255,255,255,.06)),
+        linear-gradient(180deg, #162131 0%, #1f2c3c 100%);
       position: relative;
       display:flex;
       align-items:flex-end;
       padding: 16px;
     }
 
-    body.dark .card-img{
-      background:
-        linear-gradient(135deg, rgba(110,169,211,.24), rgba(255,255,255,.06)),
-        linear-gradient(180deg, #182231 0%, #1f2c3c 100%);
-    }
-
     .flower{
       position:absolute;
       inset:auto 14px 14px auto;
       font-size: 64px;
-      opacity: .22;
+      opacity: .18;
       transform: rotate(-10deg);
       user-select:none;
     }
@@ -425,7 +417,7 @@
     .card-body{ padding: 18px; }
 
     .card h3{
-      font-size: 1.18rem;
+      font-size: 1.12rem;
       margin-bottom: 8px;
     }
 
@@ -444,9 +436,9 @@
     }
 
     .price{
-      font-size: 1.15rem;
+      font-size: 1.12rem;
       font-weight: 800;
-      color: #2f587a;
+      color: #cfe5f5;
     }
 
     .tag{
@@ -455,7 +447,7 @@
       padding: 7px 12px;
       border-radius: 999px;
       background: rgba(127,179,213,.12);
-      color: #477699;
+      color: #9fc4e0;
       font-size: .86rem;
       font-weight: 700;
     }
@@ -485,7 +477,8 @@
       background: var(--card);
       border: 1px solid var(--card-border);
       box-shadow: var(--shadow);
-      animation: floatIn .8s ease both;
+      animation: floatIn .7s ease both;
+      will-change: transform, opacity;
     }
 
     .feature strong{
@@ -509,61 +502,45 @@
     label{
       font-weight: 700;
       font-size: .94rem;
-      color: #365e7e;
+      color: #bcd9ee;
     }
 
     input, textarea, select{
       width: 100%;
       border: 1px solid rgba(67, 110, 150, .28);
-      background: #ffffff;
+      background: #101826;
       border-radius: 14px;
       padding: 13px 14px;
       font: inherit;
       color: var(--text);
       outline: none;
-      transition: all .25s ease;
-    }
-
-    body.dark input,
-    body.dark textarea,
-    body.dark select{
-      background: #101826;
-      color: var(--text);
-      border: 1px solid rgba(141, 182, 217, .28);
+      transition: all .22s ease;
     }
 
     textarea{ min-height: 120px; resize: vertical; }
 
     input:focus, textarea:focus, select:focus{
       border-color: rgba(127,179,213,.6);
-      box-shadow: 0 0 0 4px rgba(127,179,213,.12);
+      box-shadow: 0 0 0 4px rgba(127,179,213,.10);
     }
 
     .qris-box{
-      height: 220px;
-      display:grid;
-      place-items:center;
+      height: 260px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
       border-radius: 18px;
       border: 1px dashed rgba(127,179,213,.35);
       background: var(--card-2);
       margin-top: 14px;
-      color: #5b7d99;
-      text-align:center;
       padding: 18px;
     }
 
-    .qris-mark{
-      width: 110px;
-      height: 110px;
-      border-radius: 20px;
-      background:
-        linear-gradient(135deg, rgba(127,179,213,.22), rgba(255,255,255,.92));
-      display:grid;
-      place-items:center;
-      font-weight: 900;
-      color:#375d7d;
-      box-shadow: inset 0 0 0 8px rgba(255,255,255,.45);
-      margin-bottom: 10px;
+    .qris-image{
+      max-width: 100%;
+      max-height: 220px;
+      object-fit: contain;
+      display: block;
     }
 
     .rekening-list{
@@ -630,31 +607,19 @@
     }
 
     .bubble.received{
-      background: #f3f8fc;
-      color: #1b3550;
-      border: 1px solid rgba(67, 110, 150, .18);
+      background: #101826;
+      color: #edf4fb;
+      border: 1px solid rgba(141, 182, 217, .18);
       border-top-left-radius: 8px;
       align-self:start;
     }
 
     .bubble.sent{
-      background: #dff1d8;
-      color: #18311f;
-      border: 1px solid rgba(79, 138, 93, .18);
-      border-top-right-radius: 8px;
-      margin-left:auto;
-    }
-
-    body.dark .bubble.received{
-      background: #101826;
-      color: #edf4fb;
-      border: 1px solid rgba(141, 182, 217, .18);
-    }
-
-    body.dark .bubble.sent{
       background: #203926;
       color: #eaf7ee;
       border: 1px solid rgba(118, 171, 128, .18);
+      border-top-right-radius: 8px;
+      margin-left:auto;
     }
 
     .chat-form{
@@ -696,10 +661,10 @@
       .container{ width: min(100% - 20px, 1180px); }
       nav ul{ gap: 8px; }
       nav a{ padding: 8px 11px; font-size: .92rem; }
-      .hero{ padding-top: 26px; }
+      .hero{ padding-top: 24px; }
       .hero-inner{ padding: 20px; }
       .hero-aside{ padding: 16px; }
-      h1{ font-size: 2.25rem; max-width: 100%; }
+      h1{ font-size: 1.9rem; max-width: 100%; }
       .card-img{ height: 160px; }
       .bubble{ max-width: 100%; }
       .chat-input-row{ grid-template-columns: 1fr; }
@@ -707,7 +672,7 @@
     }
   </style>
 </head>
-<body>
+<body class="dark">
   <header>
     <div class="container">
       <div class="nav">
@@ -726,7 +691,7 @@
           </nav>
 
           <label class="theme-switch" title="Toggle dark mode">
-            <input type="checkbox" id="themeToggle">
+            <input type="checkbox" id="themeToggle" checked>
             <span class="slider"></span>
           </label>
         </div>
@@ -954,12 +919,9 @@
           <div class="payment-grid">
             <div class="payment-card">
               <h3>Pembayaran QRIS</h3>
-              <p>Tempelkan gambar QRIS kamu di area ini. Jika belum ada, bagian ini bisa dipakai sebagai placeholder.</p>
+              <p>Gambar QRIS diambil langsung dari file <b>qris.jpg</b> yang ada di root folder.</p>
               <div class="qris-box">
-                <div>
-                  <div class="qris-mark">QRIS</div>
-                  <div>Upload gambar QRIS di sini</div>
-                </div>
+                <img src="./qris.jpg" alt="QRIS Cloudsinvite" class="qris-image">
               </div>
             </div>
 
@@ -986,12 +948,6 @@
 
   <script>
     const themeToggle = document.getElementById('themeToggle');
-    const savedTheme = localStorage.getItem('theme');
-
-    if (savedTheme === 'dark') {
-      document.body.classList.add('dark');
-      themeToggle.checked = true;
-    }
 
     themeToggle.addEventListener('change', function () {
       if (this.checked) {
@@ -1002,6 +958,16 @@
         localStorage.setItem('theme', 'light');
       }
     });
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      document.body.classList.remove('dark');
+      themeToggle.checked = false;
+    } else {
+      document.body.classList.add('dark');
+      themeToggle.checked = true;
+      localStorage.setItem('theme', 'dark');
+    }
 
     const orderForm = document.getElementById('orderForm');
     orderForm.addEventListener('submit', function(e) {
