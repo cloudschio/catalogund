@@ -278,7 +278,6 @@
     .hero p,
     .section-title p,
     .desc,
-    .feature span,
     .payment-card p,
     footer{
       color: var(--muted);
@@ -421,22 +420,20 @@
 
     .card-img{
       height: 180px;
+      position: relative;
+      overflow: hidden;
       background:
         linear-gradient(135deg, rgba(110,169,211,.26), rgba(255,255,255,.06)),
         linear-gradient(180deg, #162131 0%, #1f2c3c 100%);
-      position: relative;
-      display:flex;
-      align-items:flex-end;
-      padding: 16px;
     }
 
-    .flower{
-      position:absolute;
-      inset:auto 14px 14px auto;
-      font-size: 64px;
-      opacity: .18;
-      transform: rotate(-10deg);
-      user-select:none;
+    .card-img iframe,
+    .card-img img{
+      width:100%;
+      height:100%;
+      border:0;
+      display:block;
+      object-fit: cover;
     }
 
     .card-body{ padding: 18px; }
@@ -607,52 +604,9 @@
       border: 1px solid rgba(67, 110, 150, .20);
     }
 
-    .chat-header{
-      display:flex;
-      align-items:center;
-      gap: 12px;
-      padding-bottom: 14px;
-      margin-bottom: 14px;
-      border-bottom: 1px solid rgba(127,179,213,.14);
-    }
-
-    .chat-avatar{
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display:grid;
-      place-items:center;
-      background: linear-gradient(135deg, #7fb3d5, #a9cfe8);
-      color: #fff;
-      font-weight: 900;
-      flex: 0 0 auto;
-    }
-
-    .chat-meta strong{
-      display:block;
-      font-size: 1rem;
-      margin-bottom: 2px;
-    }
-
-    .chat-meta span{
-      font-size: .85rem;
-      color: var(--muted);
-    }
-
     .chat-form{
       display:grid;
       gap: 12px;
-    }
-
-    .chat-input-row{
-      display:grid;
-      grid-template-columns: 1fr auto;
-      gap: 10px;
-      align-items:end;
-    }
-
-    .chat-send{
-      min-width: 110px;
     }
 
     .location-box{
@@ -799,24 +753,20 @@
       header .nav{
         align-items:stretch;
       }
-
       .nav-right{
         width: 100%;
         justify-content: space-between;
         align-items: center;
       }
-
       nav{
         width: 100%;
       }
-
       nav ul{
         width: 100%;
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 8px;
       }
-
       nav a{
         display:flex;
         justify-content:center;
@@ -832,15 +782,8 @@
       .hero-aside{ padding: 16px; }
       h1{ font-size: 1.9rem; max-width: 100%; }
       .card-img{ height: 160px; }
-      .bubble{ max-width: 100%; }
-      .chat-input-row{ grid-template-columns: 1fr; }
       .chat-send{ width: 100%; }
-      nav ul{
-        grid-template-columns: 1fr 1fr;
-      }
-      .testimonial-card{
-        width: 82vw;
-      }
+      .testimonial-card{ width: 82vw; }
     }
   </style>
 </head>
@@ -882,8 +825,7 @@
               <div class="kicker">✿ Katalog Produk Digital Premium</div>
               <h1>CLOUDSINVITE - Solusi undangan cantik, auto dilirik</h1>
               <p>
-                Sebarkan kebahagiaan tanpa ribet! 
-                Buat undangan digital kekinian dengan desain premium, proses pengerjaan cepat, dan fitur lengkap. Praktis, hemat biaya, dan siap dikirim ke semua orang terdekatmu dalam hitungan menit..
+                Sebarkan kebahagiaan tanpa ribet! Buat undangan digital kekinian dengan desain premium, proses pengerjaan cepat, dan fitur lengkap. Praktis, hemat biaya, dan siap dikirim ke semua orang terdekatmu dalam hitungan menit.
               </p>
               <div class="cta">
                 <a class="btn btn-primary" href="#produk">Lihat Produk</a>
@@ -895,7 +837,7 @@
               <div class="hero-aside-box">
                 <h3>Kenapa cocok?</h3>
                 <p class="desc" style="margin-top:10px;">
-                 Undangan digital turut menjaga bumi dengan solusi <b>paperless</b> tanpa menghasilkan <i>sampah kertas</i>. 
+                  Undangan digital turut menjaga bumi dengan solusi <b>paperless</b> tanpa menghasilkan <i>sampah kertas</i>.
                   Serta simple, canggih, interaktif, dan desain yang cakep!
                 </p>
                 <div class="stats">
@@ -927,9 +869,11 @@
 
           <div class="grid">
             <article class="card">
-              <div class="card-img"><div class="flower">✿</div></div>
+              <div class="card-img">
+                <iframe src="https://URL-LIVE-PREVIEW-KAMU-1" title="Live Preview Produk 1" loading="lazy" allowfullscreen></iframe>
+              </div>
               <div class="card-body">
-                <h3>Undangan Pernikahan - Tema Jawa </h3>
+                <h3>Undangan Pernikahan - Tema Jawa</h3>
                 <p class="desc">Paket undangan digital bernuansa jawa yang kental dengan background wayang</p>
                 <ul class="product-features">
                   <li>Desain responsive untuk HP</li>
@@ -951,7 +895,9 @@
             </article>
 
             <article class="card">
-              <div class="card-img"><div class="flower">✿</div></div>
+              <div class="card-img">
+                <iframe src="https://URL-LIVE-PREVIEW-KAMU-2" title="Live Preview Produk 2" loading="lazy" allowfullscreen></iframe>
+              </div>
               <div class="card-body">
                 <h3>Undangan Pernikahan - Tema Luxury Brown</h3>
                 <p class="desc">Tema Luxury brown dengan teks berwarna emas, memberikan kesan mewah namun casual.</p>
@@ -975,7 +921,9 @@
             </article>
 
             <article class="card">
-              <div class="card-img"><div class="flower">✿</div></div>
+              <div class="card-img">
+                <iframe src="https://URL-LIVE-PREVIEW-KAMU-3" title="Live Preview Produk 3" loading="lazy" allowfullscreen></iframe>
+              </div>
               <div class="card-body">
                 <h3>Katalog Digital</h3>
                 <p class="desc">Template katalog online yang cocok untuk dipakai di GitHub Pages, WhatsApp, atau link bio.</p>
@@ -1014,93 +962,14 @@
 
           <div class="testimonial-scroller">
             <div class="testimonial-track">
-              <div class="testimonial-card">
-                <div class="testimonial-head">
-                  <div class="testimonial-avatar">A</div>
-                  <div>
-                    <strong>Aulia</strong>
-                    <span>Pengguna undangan digital</span>
-                  </div>
-                </div>
-                <p>Desainnya cantik, responsif, dan cepat dipakai. Hasilnya terlihat lebih premium dari yang saya bayangkan.</p>
-              </div>
-
-              <div class="testimonial-card">
-                <div class="testimonial-head">
-                  <div class="testimonial-avatar">R</div>
-                  <div>
-                    <strong>Rizky</strong>
-                    <span>Pelanggan paket katalog</span>
-                  </div>
-                </div>
-                <p>Form order WhatsApp-nya mudah dipahami, dan tampilannya juga rapi di HP. Sangat membantu untuk promosi.</p>
-              </div>
-
-              <div class="testimonial-card">
-                <div class="testimonial-head">
-                  <div class="testimonial-avatar">N</div>
-                  <div>
-                    <strong>Nadia</strong>
-                    <span>Pelanggan konsultasi</span>
-                  </div>
-                </div>
-                <p>Fitur konsultasinya sangat praktis. Proses order jadi lebih jelas dan profesional.</p>
-              </div>
-
-              <div class="testimonial-card">
-                <div class="testimonial-head">
-                  <div class="testimonial-avatar">S</div>
-                  <div>
-                    <strong>Salsa</strong>
-                    <span>Pembeli QRIS</span>
-                  </div>
-                </div>
-                <p>Pembayaran QRIS-nya gampang dipakai, dan halaman ini terlihat meyakinkan saat dibuka di mobile.</p>
-              </div>
-
-              <div class="testimonial-card">
-                <div class="testimonial-head">
-                  <div class="testimonial-avatar">D</div>
-                  <div>
-                    <strong>Dimas</strong>
-                    <span>Pelanggan template</span>
-                  </div>
-                </div>
-                <p>Warnanya soft, tombolnya jelas, dan tampilannya cocok untuk jual produk digital.</p>
-              </div>
-
-              <div class="testimonial-card">
-                <div class="testimonial-head">
-                  <div class="testimonial-avatar">A</div>
-                  <div>
-                    <strong>Aulia</strong>
-                    <span>Pengguna undangan digital</span>
-                  </div>
-                </div>
-                <p>Desainnya cantik, responsif, dan cepat dipakai. Hasilnya terlihat lebih premium dari yang saya bayangkan.</p>
-              </div>
-
-              <div class="testimonial-card">
-                <div class="testimonial-head">
-                  <div class="testimonial-avatar">R</div>
-                  <div>
-                    <strong>Rizky</strong>
-                    <span>Pelanggan paket katalog</span>
-                  </div>
-                </div>
-                <p>Form order WhatsApp-nya mudah dipahami, dan tampilannya juga rapi di HP. Sangat membantu untuk promosi.</p>
-              </div>
-
-              <div class="testimonial-card">
-                <div class="testimonial-head">
-                  <div class="testimonial-avatar">N</div>
-                  <div>
-                    <strong>Nadia</strong>
-                    <span>Pelanggan konsultasi</span>
-                  </div>
-                </div>
-                <p>Fitur konsultasinya sangat praktis. Proses order jadi lebih jelas dan profesional.</p>
-              </div>
+              <div class="testimonial-card"><div class="testimonial-head"><div class="testimonial-avatar">A</div><div><strong>Aulia</strong><span>Pengguna undangan digital</span></div></div><p>Desainnya cantik, responsif, dan cepat dipakai. Hasilnya terlihat lebih premium dari yang saya bayangkan.</p></div>
+              <div class="testimonial-card"><div class="testimonial-head"><div class="testimonial-avatar">R</div><div><strong>Rizky</strong><span>Pelanggan paket katalog</span></div></div><p>Form order WhatsApp-nya mudah dipahami, dan tampilannya juga rapi di HP. Sangat membantu untuk promosi.</p></div>
+              <div class="testimonial-card"><div class="testimonial-head"><div class="testimonial-avatar">N</div><div><strong>Nadia</strong><span>Pelanggan konsultasi</span></div></div><p>Fitur konsultasinya sangat praktis. Proses order jadi lebih jelas dan profesional.</p></div>
+              <div class="testimonial-card"><div class="testimonial-head"><div class="testimonial-avatar">S</div><div><strong>Salsa</strong><span>Pembeli QRIS</span></div></div><p>Pembayaran QRIS-nya gampang dipakai, dan halaman ini terlihat meyakinkan saat dibuka di mobile.</p></div>
+              <div class="testimonial-card"><div class="testimonial-head"><div class="testimonial-avatar">D</div><div><strong>Dimas</strong><span>Pelanggan template</span></div></div><p>Warnanya soft, tombolnya jelas, dan tampilannya cocok untuk jual produk digital.</p></div>
+              <div class="testimonial-card"><div class="testimonial-head"><div class="testimonial-avatar">A</div><div><strong>Aulia</strong><span>Pengguna undangan digital</span></div></div><p>Desainnya cantik, responsif, dan cepat dipakai. Hasilnya terlihat lebih premium dari yang saya bayangkan.</p></div>
+              <div class="testimonial-card"><div class="testimonial-head"><div class="testimonial-avatar">R</div><div><strong>Rizky</strong><span>Pelanggan paket katalog</span></div></div><p>Form order WhatsApp-nya mudah dipahami, dan tampilannya juga rapi di HP. Sangat membantu untuk promosi.</p></div>
+              <div class="testimonial-card"><div class="testimonial-head"><div class="testimonial-avatar">N</div><div><strong>Nadia</strong><span>Pelanggan konsultasi</span></div></div><p>Fitur konsultasinya sangat praktis. Proses order jadi lebih jelas dan profesional.</p></div>
             </div>
           </div>
         </div>
@@ -1124,56 +993,45 @@
                   <label for="mempelaiLaki">Nama Mempelai Laki-Laki</label>
                   <input id="mempelaiLaki" type="text" placeholder="Nama mempelai laki-laki" required>
                 </div>
-
                 <div class="form-group">
                   <label for="mempelaiPerempuan">Nama Mempelai Perempuan</label>
                   <input id="mempelaiPerempuan" type="text" placeholder="Nama mempelai perempuan" required>
                 </div>
-
                 <div class="form-group">
                   <label for="ortuLaki">Nama Orangtua Laki-Laki</label>
                   <input id="ortuLaki" type="text" placeholder="Nama orangtua laki-laki" required>
                 </div>
-
                 <div class="form-group">
                   <label for="ortuPerempuan">Nama Orangtua Perempuan</label>
                   <input id="ortuPerempuan" type="text" placeholder="Nama orangtua perempuan" required>
                 </div>
-
                 <div class="form-group">
                   <label for="akad">Tanggal Akad</label>
                   <input id="akad" type="date" required>
                 </div>
-
                 <div class="form-group">
                   <label for="resepsi">Tanggal Resepsi</label>
                   <input id="resepsi" type="date" required>
                 </div>
-
                 <div class="form-group">
                   <label for="lokasiAkad">Lokasi Akad</label>
                   <input id="lokasiAkad" type="text" placeholder="Lokasi akad" required>
                 </div>
-
                 <div class="form-group">
                   <label for="lokasiResepsi">Lokasi Resepsi</label>
                   <input id="lokasiResepsi" type="text" placeholder="Lokasi resepsi" required>
                 </div>
-
                 <div class="form-group">
                   <label for="catatan">Catatan</label>
                   <textarea id="catatan" placeholder="Tambahkan catatan tambahan..."></textarea>
                 </div>
-
                 <button type="submit" class="btn btn-primary">Kirim Pesanan via WhatsApp</button>
               </form>
             </div>
 
             <div class="chat-box">
               <h3>Form Konsultasi</h3>
-              <p class="desc" style="margin-top:10px;">
-                Isi data lalu kirim untuk konsultasi.
-              </p>
+              <p class="desc" style="margin-top:10px;">Isi data lalu kirim untuk konsultasi.</p>
 
               <form id="consultForm" class="chat-form">
                 <div class="form-group">
@@ -1256,7 +1114,6 @@
 
   <script>
     const themeToggle = document.getElementById('themeToggle');
-
     themeToggle.addEventListener('change', function () {
       if (this.checked) {
         document.body.classList.add('dark');
@@ -1280,7 +1137,6 @@
     const orderForm = document.getElementById('orderForm');
     orderForm.addEventListener('submit', function(e) {
       e.preventDefault();
-
       const mempelaiLaki = document.getElementById('mempelaiLaki').value.trim();
       const mempelaiPerempuan = document.getElementById('mempelaiPerempuan').value.trim();
       const ortuLaki = document.getElementById('ortuLaki').value.trim();
@@ -1306,25 +1162,20 @@ Catatan: ${catatan || '-'}
 
 Mohon info detail selanjutnya.`;
 
-      const url = `https://wa.me/${adminNumber}?text=${encodeURIComponent(pesan)}`;
-      window.open(url, '_blank');
+      window.open(`https://wa.me/${adminNumber}?text=${encodeURIComponent(pesan)}`, '_blank');
     });
 
     const consultForm = document.getElementById('consultForm');
     consultForm.addEventListener('submit', function(e) {
       e.preventDefault();
-
       const nama = document.getElementById('namaKonsul').value.trim();
       const isi = document.getElementById('isiKonsul').value.trim();
       const adminNumber = '6281234567890';
-
       const pesan = `Halo admin Cloudsinvite, saya ingin konsultasi.
 
 Nama: ${nama}
 Pesan: ${isi}`;
-
-      const url = `https://wa.me/${adminNumber}?text=${encodeURIComponent(pesan)}`;
-      window.open(url, '_blank');
+      window.open(`https://wa.me/${adminNumber}?text=${encodeURIComponent(pesan)}`, '_blank');
     });
   </script>
 </body>
